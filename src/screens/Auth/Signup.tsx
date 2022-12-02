@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {AuthButton, Button, Input} from '~components';
 import {Icons, IMAGES} from '~constants';
 import {COLORS, FONTS, _styles} from '~styles';
@@ -19,48 +18,16 @@ interface Props {
 
 type ITabs = 'individual' | 'profesonal' | null;
 
-const SignupScreen: FC<Props> = ({onMove, showSignup}) => {
+const SignupScreen: FC<Props> = ({showSignup}) => {
   const tralation = useTranslations();
   const [tabs, setTabs] = useState<ITabs>(null);
   const [isSelected, setIsSelected] = useState<boolean>(false);
-
-  const selectedColor = [
-    COLORS.Primary_Gradient[3],
-    COLORS.Primary_Gradient[2],
-  ];
-
-  const unSelectedColor = [
-    COLORS.Primary_Gradient[0],
-    COLORS.Primary_Gradient[1],
-  ];
 
   return (
     <ImageBackground
       source={!tabs ? IMAGES.Card : IMAGES.BigCard}
       style={!tabs ? styles.card : styles.bigCard}
       imageStyle={styles.cardbody}>
-      <View style={styles.header}>
-        <LinearGradient
-          colors={unSelectedColor}
-          style={styles.button}
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 1}}>
-          <TouchableOpacity onPress={onMove} style={styles.buttonLink}>
-            <Text style={[_styles.link, styles.unselectedTitle]}>
-              {tralation.login_tab}
-            </Text>
-          </TouchableOpacity>
-          <LinearGradient
-            colors={selectedColor}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 1}}
-            style={styles.selectedButton}>
-            <Text style={[_styles.link, styles.selectedTitle]}>
-              {tralation.signup_tab}
-            </Text>
-          </LinearGradient>
-        </LinearGradient>
-      </View>
       <View style={!tabs ? styles.body : styles.mainBody}>
         <AuthButton
           title={tralation.individual_btn}

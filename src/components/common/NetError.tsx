@@ -1,7 +1,7 @@
 import React, {FC, memo, useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-//import {COLORS} from '~constants';
+import {COLORS, FONTS} from '~styles';
 
 const NetError: FC = () => {
   const [isConnected, setIsConnected] = useState<boolean>(true);
@@ -28,12 +28,13 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 5,
     alignItems: 'center',
-    //backgroundColor: COLORS.Primary_Background,
+    backgroundColor: COLORS.Primary_Background[0],
   },
   title: {
     fontSize: 10,
     fontWeight: '400',
-    //color: COLORS.Light,
+    fontFamily: FONTS.Secondary_Regular,
+    color: COLORS.Light,
     textAlign: 'center',
   },
 });

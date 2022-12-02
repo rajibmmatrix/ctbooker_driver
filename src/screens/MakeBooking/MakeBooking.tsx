@@ -5,7 +5,6 @@ import {
   BookingFileUpload,
   BookingIconTitle,
   Container,
-  DateTimePicker,
   RadioButton,
 } from '~components';
 import {useTranslations} from '~translation';
@@ -19,9 +18,6 @@ export default function MakeBookingScreen({
   const {type} = route.params;
   const translations = useTranslations();
   const [title, setTitle] = useState('');
-  const [date, setDate] = useState<Date | null>(null);
-  const [showDateTime, setShowDateTime] = useState<boolean>(false);
-  const [mode, setMode] = useState<'date' | 'time'>('date');
 
   useLayoutEffect(() => {
     if (type === 'Technical Control') {
@@ -34,12 +30,6 @@ export default function MakeBookingScreen({
     return () => setTitle('');
   }, [type, translations]);
 
-  const handelDate = (_: any, value: Date) => {
-    const currentDate = value;
-    setDate(currentDate);
-    setShowDateTime(false);
-  };
-
   return (
     <Container>
       <BackHeader title={title} />
@@ -47,23 +37,15 @@ export default function MakeBookingScreen({
         <BookingIconTitle
           title={translations.date_of_reservition}
           placeholder={translations.date}
-          value={date?.toLocaleDateString()}
           Icon={Icons.Calendar}
           disabled={true}
-          onPress={() => {
-            setShowDateTime(true);
-            setMode('date');
-          }}
+          onPress={() => {}}
         />
         <BookingIconTitle
           placeholder={translations.pickup_time}
-          value={date?.toLocaleTimeString()}
           Icon={Icons.Clock}
           disabled={true}
-          onPress={() => {
-            setShowDateTime(true);
-            setMode('time');
-          }}
+          onPress={() => {}}
         />
         <BookingIconTitle
           value={translations.pickup_location}
@@ -121,12 +103,6 @@ export default function MakeBookingScreen({
           isSelected={false}
           onPress={() => {}}
           style={styles.footer}
-        />
-        <DateTimePicker
-          show={showDateTime}
-          mode={mode}
-          onChange={handelDate}
-          value={date}
         />
       </ScrollView>
     </Container>

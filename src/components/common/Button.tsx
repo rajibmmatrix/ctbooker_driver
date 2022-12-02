@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, _styles} from '~styles';
 
 interface Props {
@@ -14,7 +13,6 @@ interface Props {
   onPress: () => void;
   style?: ViewStyle;
   textStyle?: TextStyle;
-  color?: [];
   disabled?: boolean;
 }
 
@@ -23,16 +21,14 @@ const Button: FC<Props> = ({
   textStyle,
   onPress,
   style,
-  color,
   disabled = false,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress} disabled={disabled}>
-      <LinearGradient
-        colors={color ? color : COLORS.Primary_Button}
-        style={[styles.button, style]}>
-        <Text style={[_styles.link, styles.title, textStyle]}>{title}</Text>
-      </LinearGradient>
+    <TouchableOpacity
+      onPress={onPress}
+      disabled={disabled}
+      style={[styles.button, style]}>
+      <Text style={[_styles.link, styles.title, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -45,6 +41,7 @@ const styles = StyleSheet.create({
     width: 135,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: COLORS.Primary_Button[0],
     borderRadius: 50,
   },
   title: {

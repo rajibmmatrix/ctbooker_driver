@@ -5,8 +5,9 @@ import {
   StyleSheet,
   View,
   Dimensions,
+  Text,
 } from 'react-native';
-import {Container, Text} from '~components';
+import {Container} from '~components';
 import {Icons, IMAGES} from '~constants';
 import {useTranslations} from '~translation';
 import SignupScreen from './Signup';

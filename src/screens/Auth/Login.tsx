@@ -4,34 +4,23 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  Text,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation, CommonActions} from '@react-navigation/native';
-import {Button, Input, Text} from '~common';
+import {Button, Input} from '~common';
 import {Icons, IMAGES} from '~constants';
 import {COLORS, FONTS, _styles} from '~styles';
 import {useTranslations} from '~translation';
-import {startLoading, stopLoading, useActions} from '~app';
+import {startLoading, stopLoading, useDispatch} from '~app';
 
 interface Props {
   onMove: () => void;
 }
 
-const LoginScreen: FC<Props> = ({onMove}) => {
-  const dispatch = useActions();
+const LoginScreen: FC<Props> = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const tralation = useTranslations();
-
-  const selectedColor = [
-    COLORS.Primary_Gradient[2],
-    COLORS.Primary_Gradient[3],
-  ];
-
-  const unSelectedColor = [
-    COLORS.Primary_Gradient[4],
-    COLORS.Primary_Gradient[0],
-    COLORS.Primary_Gradient[1],
-  ];
 
   const handleLogin = () => {
     dispatch(startLoading());
@@ -48,28 +37,6 @@ const LoginScreen: FC<Props> = ({onMove}) => {
       source={IMAGES.Card}
       style={styles.card}
       imageStyle={styles.cardbody}>
-      <View style={styles.header}>
-        <LinearGradient
-          colors={unSelectedColor}
-          style={styles.button}
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 1}}>
-          <LinearGradient
-            colors={selectedColor}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 1}}
-            style={styles.selectedButton}>
-            <Text style={[_styles.link, styles.selectedTitle]}>
-              {tralation.login_tab}
-            </Text>
-          </LinearGradient>
-          <TouchableOpacity onPress={onMove} style={styles.buttonLink}>
-            <Text style={[_styles.link, styles.unselectedTitle]}>
-              {tralation.signup_tab}
-            </Text>
-          </TouchableOpacity>
-        </LinearGradient>
-      </View>
       <View style={styles.body}>
         <Input
           title={tralation.email}
