@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {SideScreenProps} from 'types';
 
-export default function NotificationScreen() {
+export default function NotificationScreen({}: SideScreenProps<'Notification'>) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Notification Screen</Text>
@@ -14,10 +15,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#ffffff',
   },
   title: {
-    fontSize: 24,
-    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: 'bold',
     color: '#000000',
   },
 });

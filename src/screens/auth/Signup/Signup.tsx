@@ -1,11 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {TabScreenProps} from 'types';
+import {StackScreenProps} from 'types';
 
-export default function BookingScreen({}: TabScreenProps<'Booking'>) {
+export default function SignupScreen({}: StackScreenProps<'Signup'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Booking Screen</Text>
+      <Text style={styles.title}>Signup Screen</Text>
     </View>
   );
 }

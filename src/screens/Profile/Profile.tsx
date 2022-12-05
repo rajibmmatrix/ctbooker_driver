@@ -2,10 +2,10 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TabScreenProps} from 'types';
 
-export default function BookingScreen({}: TabScreenProps<'Booking'>) {
+export default function ProfileScreen({}: TabScreenProps<'Profile'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Booking Screen</Text>
+      <Text style={styles.title}>Profile Screen</Text>
     </View>
   );
 }

@@ -1,8 +1,14 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {AuthScreen, ForgotScreen, LogoutScreen, SplashScreen} from '~screens';
-import Sidebar from './SideNavigation';
+import {
+  ForgotScreen,
+  LoginScreen,
+  LogoutScreen,
+  SignupScreen,
+  SplashScreen,
+} from '~screens';
+import SideNavigation from './SideNavigation';
 import {StackParamList} from 'types';
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -13,10 +19,11 @@ export default function Navigation() {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Group>
-          <Stack.Screen name="Auth" component={AuthScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} />
           <Stack.Screen name="Forgot" component={ForgotScreen} />
         </Stack.Group>
-        <Stack.Screen name="Sidebar" component={Sidebar} />
+        <Stack.Screen name="Sidebar" component={SideNavigation} />
         <Stack.Screen name="Logout" component={LogoutScreen} />
       </Stack.Navigator>
     </NavigationContainer>

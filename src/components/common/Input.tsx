@@ -8,7 +8,7 @@ import {
   TextInput,
 } from 'react-native';
 import {SvgProps} from 'react-native-svg';
-import {COLORS, FONTS, _styles} from '~styles';
+import {COLORS, FONTS} from '~styles';
 
 interface Props extends TextInputProps {
   title: string;
@@ -28,9 +28,9 @@ const Input: FC<Props> = ({
     <View style={[styles.container, containerStyle]}>
       <View style={styles.header}>
         <Icon width={14} height={14} />
-        <Text style={[_styles.link, styles.title, titleStyle]}>{title}</Text>
+        <Text style={[styles.title, titleStyle]}>{title}</Text>
       </View>
-      <TextInput {...props} style={[_styles.link, styles.input]} />
+      <TextInput {...props} style={styles.input} />
     </View>
   );
 };
@@ -40,7 +40,6 @@ export default memo(Input);
 const styles = StyleSheet.create({
   container: {
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.Primary_Line,
     marginBottom: 30,
   },
   header: {
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingLeft: 19,
     fontWeight: '300',
-    fontFamily: FONTS.Primary_Light,
-    color: COLORS.Primary_Input,
+    fontFamily: FONTS.Primary_Medium,
+    color: COLORS.Primary_Text,
   },
 });

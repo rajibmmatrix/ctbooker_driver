@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {BookingScreen, HomeScreen, AccountScreen} from '~screens';
-import {CustomBottom} from '~components';
+import {BookingScreen, HomeScreen, ProfileScreen} from '~screens';
 import {Icons} from '~constants';
-import {COLORS, FONTS, _styles} from '~styles';
+import {COLORS, FONTS} from '~styles';
 import {useTranslations} from '~translation';
 import {TabParamList} from 'types';
 
@@ -16,7 +15,6 @@ export default function Tabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarBackground: () => <CustomBottom />,
         tabBarStyle: {
           backgroundColor: 'transparent',
           borderTopWidth: 0,
@@ -36,7 +34,7 @@ export default function Tabs() {
         component={HomeScreen}
         options={{
           title: translations.welcome,
-          tabBarIcon: () => <Icons.House width={20} height={20} />,
+          tabBarIcon: () => <Icons.Menu width={20} height={20} />,
         }}
       />
       <Tab.Screen
@@ -44,21 +42,15 @@ export default function Tabs() {
         component={BookingScreen}
         options={{
           title: translations.reservation,
-          tabBarIcon: () => (
-            <Icons.BookingTab
-              width={63}
-              height={63}
-              style={_styles.bookingIcon}
-            />
-          ),
+          tabBarIcon: () => <Icons.Menu width={63} height={63} />,
         }}
       />
       <Tab.Screen
-        name="Account"
-        component={AccountScreen}
+        name="Profile"
+        component={ProfileScreen}
         options={{
           title: translations.my_account,
-          tabBarIcon: () => <Icons.House width={18} height={18} />,
+          tabBarIcon: () => <Icons.Menu width={18} height={18} />,
         }}
       />
     </Tab.Navigator>

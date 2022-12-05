@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
-import {COLORS, _styles} from '~styles';
+import {COLORS} from '~styles';
 
 interface Props {
   title: string;
@@ -28,7 +28,7 @@ const Button: FC<Props> = ({
       onPress={onPress}
       disabled={disabled}
       style={[styles.button, style]}>
-      <Text style={[_styles.link, styles.title, textStyle]}>{title}</Text>
+      <Text style={[styles.title, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     width: 135,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.Primary_Button[0],
+    backgroundColor: COLORS.Primary,
     borderRadius: 50,
   },
   title: {

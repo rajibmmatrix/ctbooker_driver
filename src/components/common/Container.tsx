@@ -26,6 +26,6 @@ export default memo(Container);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.Primary_Background[0],
+    backgroundColor: COLORS.Light,
   },
 });

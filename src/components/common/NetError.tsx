@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 5,
     alignItems: 'center',
-    backgroundColor: COLORS.Primary_Background[0],
+    backgroundColor: COLORS.Dark,
   },
   title: {
     fontSize: 10,
     fontWeight: '400',
-    fontFamily: FONTS.Secondary_Regular,
+    fontFamily: FONTS.Primary_Regular,
     color: COLORS.Light,
     textAlign: 'center',
   },

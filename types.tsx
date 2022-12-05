@@ -15,24 +15,21 @@ declare global {
 //For Stack Navigations
 export type StackParamList = {
   Splash: undefined;
-  //Auth Screens
-  Auth: undefined;
+  //auth Screens
+  Login: undefined;
+  Signup: undefined;
   Forgot: undefined;
 
-  //App Screens
+  //app Screens
   Sidebar: NavigatorScreenParams<SideParamList> | undefined;
   Logout: undefined;
 };
 
-export type IBooking = 'Technical Control' | 'Against Visit' | 'Car Repair';
-
 //For Side Navigations
 export type SideParamList = {
   Tab: NavigatorScreenParams<TabParamList> | undefined;
-  BookingResume: undefined;
-  CarDocuments: undefined;
+  VehicleDocuments: undefined;
   ChangePassword: undefined;
-  MakeBooking: {type: IBooking};
   Payment: undefined;
   EditProfile: undefined;
   Notification: undefined;
@@ -42,7 +39,7 @@ export type SideParamList = {
 export type TabParamList = {
   Home: undefined;
   Booking: undefined;
-  Account: undefined;
+  Profile: undefined;
 };
 
 //For Stack Screens

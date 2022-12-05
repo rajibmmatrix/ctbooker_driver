@@ -7,7 +7,7 @@ import {IMAGES} from '~constants';
 export default function SplashScreen({navigation}: StackScreenProps<'Splash'>) {
   useEffect(() => {
     Splash.hide();
-    navigation.replace('Auth');
+    navigation.replace('Login');
     return () => {};
   }, [navigation]);
 
