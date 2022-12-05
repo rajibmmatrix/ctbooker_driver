@@ -1,6 +1,23 @@
 export {default as Logo} from '../assets/icons/logo.svg';
 export {default as Radio} from '../assets/icons/radio.svg';
 export {default as RadioSelected} from '../assets/icons/radio_selected.svg';
+export {default as Profile} from '../assets/icons/profile.svg';
+export {default as UserSquare} from '../assets/icons/user-square.svg';
 export {default as Menu} from '../assets/icons/menu.svg';
+export {default as MenuClose} from '../assets/icons/menu_close.svg';
 export {default as Notification} from '../assets/icons/notification.svg';
 export {default as ArrowLeft} from '../assets/icons/arrow-left.svg';
+export {default as SMS} from '../assets/icons/sms.svg';
+export {default as Unlock} from '../assets/icons/unlock.svg';
+export {default as User} from '../assets/icons/user.svg';
+export {default as House} from '../assets/icons/house.svg';
+export {default as HouseActive} from '../assets/icons/house_active.svg';
+export {default as Driving} from '../assets/icons/driving.svg';
+export {default as SmallUser} from '../assets/icons/small_user.svg';
+
+export {default as MenuDocument} from '../assets/icons/menu_document.svg';
+export {default as MenuExport} from '../assets/icons/menu_export.svg';
+export {default as MenuHouse} from '../assets/icons/menu_house.svg';
+export {default as MenuLock} from '../assets/icons/menu_lock.svg';
+export {default as MenuUser} from '../assets/icons/menu_user.svg';
+export {default as MenuWallet} from '../assets/icons/menu_wallet.svg';

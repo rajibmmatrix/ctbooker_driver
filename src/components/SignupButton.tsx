@@ -65,9 +65,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    marginLeft: 12,
-    fontWeight: '600',
-    fontFamily: FONTS.Primary_Semibold,
-    color: COLORS.Primary_Link,
+    fontSize: 16,
+    fontWeight: '700',
+    lineHeight: 24,
+    fontFamily: FONTS.Secondary_Semibold,
+    color: COLORS.Light,
+    marginLeft: 13,
   },
 });

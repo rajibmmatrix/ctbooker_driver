@@ -16,9 +16,12 @@ export default function Tabs() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: 'transparent',
-          borderTopWidth: 0,
-          elevation: 0,
+          //borderTopWidth: 0,
+          //elevation: 0,
+          height: 60,
+          borderTopLeftRadius: 25,
+          borderTopRightRadius: 25,
+          backgroundColor: COLORS.Light,
         },
         tabBarLabelStyle: {
           fontSize: 11,
@@ -34,7 +37,7 @@ export default function Tabs() {
         component={HomeScreen}
         options={{
           title: translations.welcome,
-          tabBarIcon: () => <Icons.Menu width={20} height={20} />,
+          tabBarIcon: () => <Icons.House width={24} height={24} />,
         }}
       />
       <Tab.Screen
@@ -42,15 +45,15 @@ export default function Tabs() {
         component={BookingScreen}
         options={{
           title: translations.reservation,
-          tabBarIcon: () => <Icons.Menu width={63} height={63} />,
+          tabBarIcon: () => <Icons.Driving width={24} height={24} />,
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
-          title: translations.my_account,
-          tabBarIcon: () => <Icons.Menu width={18} height={18} />,
+          title: translations.my_profile,
+          tabBarIcon: () => <Icons.SmallUser width={24} height={24} />,
         }}
       />
     </Tab.Navigator>

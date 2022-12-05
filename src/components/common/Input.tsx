@@ -8,10 +8,11 @@ import {
   TextInput,
 } from 'react-native';
 import {SvgProps} from 'react-native-svg';
-import {COLORS, FONTS} from '~styles';
+import {COLORS, FONTS, _styles} from '~styles';
 
 interface Props extends TextInputProps {
-  title: string;
+  title?: string;
+  secureTextEntry?: boolean;
   containerStyle?: ViewStyle;
   titleStyle?: ViewStyle;
   Icon: FC<SvgProps>;
@@ -19,18 +20,29 @@ interface Props extends TextInputProps {
 
 const Input: FC<Props> = ({
   title,
+  secureTextEntry = false,
   titleStyle,
   containerStyle,
   Icon,
   ...props
 }) => {
   return (
-    <View style={[styles.container, containerStyle]}>
-      <View style={styles.header}>
-        <Icon width={14} height={14} />
-        <Text style={[styles.title, titleStyle]}>{title}</Text>
+    <View
+      style={[
+        styles.container,
+        secureTextEntry ? styles.border : _styles.shadow,
+        containerStyle,
+      ]}>
+      {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
+      <View style={styles.body}>
+        <Icon width={20} height={20} />
+        <TextInput
+          {...props}
+          secureTextEntry={secureTextEntry}
+          placeholderTextColor={COLORS.Primary_Placeholder}
+          style={[styles.input, styles.inputText]}
+        />
       </View>
-      <TextInput {...props} style={styles.input} />
     </View>
   );
 };
@@ -39,22 +51,45 @@ export default memo(Input);
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomWidth: 1,
-    marginBottom: 30,
+    minHeight: 60,
+    justifyContent: 'center',
+    borderRadius: 15,
+    backgroundColor: COLORS.Light,
+    marginVertical: 5,
   },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  border: {
+    borderWidth: 1,
+    borderColor: COLORS.Primary_Border,
+    backgroundColor: COLORS.Primary_Card,
   },
   title: {
-    marginLeft: 5,
+    fontSize: 12,
+    lineHeight: 14,
+    fontWeight: '400',
+    fontFamily: FONTS.Primary_Regular,
+    color: COLORS.Primary_Text,
+    textTransform: 'uppercase',
+    marginLeft: 46,
+    marginTop: 12,
+  },
+  body: {
+    paddingBottom: 5,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   input: {
     height: 35,
     width: '100%',
-    paddingLeft: 19,
-    fontWeight: '300',
-    fontFamily: FONTS.Primary_Medium,
-    color: COLORS.Primary_Text,
+    margin: 0,
+    padding: 0,
+    paddingLeft: 10,
+  },
+  inputText: {
+    fontSize: 14,
+    lineHeight: 16,
+    fontWeight: '700',
+    fontFamily: FONTS.Primary_Bold,
+    color: COLORS.Dark,
   },
 });

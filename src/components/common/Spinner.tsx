@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'transparent',
+    backgroundColor: COLORS.Primary_Modal,
   },
   body: {
     width: 150,

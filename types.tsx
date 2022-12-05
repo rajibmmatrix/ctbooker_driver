@@ -22,7 +22,6 @@ export type StackParamList = {
 
   //app Screens
   Sidebar: NavigatorScreenParams<SideParamList> | undefined;
-  Logout: undefined;
 };
 
 //For Side Navigations
@@ -98,54 +97,34 @@ export interface ISignup {
 }
 
 export interface ITranslation {
-  login_title: string;
-  email: string;
-  password: string;
-  forgot_password: string;
-  login_tab: string;
-  signup_tab: string;
-  login_button: string;
-  signup_button: string;
-  termes_and_conditions: string;
-  individual_btn: string;
-  profesonal_btn: string;
-  fname: string;
-  lname: string;
-  create_password: string;
-  home_title: string;
-  home_description: string;
-  booking: string;
-  booking_title: string;
-  type_of_service: string;
-  technical_control: string;
-  against_visit: string;
-  car_repair: string;
+  welcome: string;
+  my_profile: string;
+  change_password: string;
   vehicle_documents: string;
   payment: string;
-  historical: string;
   signout: string;
-  welcome: string;
-  reservation: string;
-  my_account: string;
-  technical_control_title: string;
-  against_visit_title: string;
-  car_repair_title: string;
-  date_of_reservition: string;
-  date: string;
-  pickup_time: string;
-  pickup_location: string;
-  deposit_same_place: string;
-  different_deposit_location: string;
-  deposit_address: string;
+  to_login: string;
+  please_login_to_continue: string;
+  email: string;
+  password: string;
+  login: string;
+  forgot_password: string;
+  signup: string;
+  individual: string;
+  profesonal: string;
+  fname: string;
+  lname: string;
+  please_register_to_continue: string;
+  register: string;
+  already_have_an_account_login: string;
+  reserve_now: string;
+  date_of_withdrawal: string;
+  withdrawal_time: string;
+  type_of_assignment: string;
+  pick_up_location: string;
+  drop_off_point: string;
+  accept: string;
+  to_refuse: string;
   price: string;
-  insurance_card_number: string;
-  gray_card: string;
-  valid_technical_control: string;
-  attachments: string;
-  next: string;
-  vehicle_problem: string;
-  max_characters: string;
-  booking_history: string;
-  service_type: string;
-  car_details: string;
+  reservation: string;
 }

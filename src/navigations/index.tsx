@@ -1,13 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {
-  ForgotScreen,
-  LoginScreen,
-  LogoutScreen,
-  SignupScreen,
-  SplashScreen,
-} from '~screens';
+import {ForgotScreen, LoginScreen, SignupScreen, SplashScreen} from '~screens';
 import SideNavigation from './SideNavigation';
 import {StackParamList} from 'types';
 
@@ -24,7 +18,6 @@ export default function Navigation() {
           <Stack.Screen name="Forgot" component={ForgotScreen} />
         </Stack.Group>
         <Stack.Screen name="Sidebar" component={SideNavigation} />
-        <Stack.Screen name="Logout" component={LogoutScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

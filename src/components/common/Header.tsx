@@ -7,22 +7,26 @@ import {COLORS, FONTS} from '~styles';
 interface Props {
   title: string;
   showNotification?: boolean;
+  isBack?: boolean;
 }
 
-const Header: FC<Props> = ({title}) => {
-  const navigation = useNavigation();
+const Header: FC<Props> = ({title, isBack = false}) => {
+  const navigation = useNavigation() as any;
 
   return (
     <View style={styles.header}>
-      <TouchableOpacity onPress={() => navigation.openDrawer()}>
-        <Icons.Menu width={19} height={19} />
+      <TouchableOpacity
+        onPress={() =>
+          isBack ? navigation.goBack() : navigation.openDrawer()
+        }>
+        {!isBack ? (
+          <Icons.Menu width={24} height={24} />
+        ) : (
+          <Icons.ArrowLeft width={24} height={24} />
+        )}
       </TouchableOpacity>
       <Text style={styles.title}>{title}</Text>
-      {/* <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Icons.ArrowLeft />
-      </TouchableOpacity> */}
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Notification' as any)}>
+      <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
         <Icons.Notification width={19} height={19} />
       </TouchableOpacity>
     </View>
@@ -40,10 +44,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 26,
   },
   title: {
-    fontSize: 13,
-    fontWeight: '300',
-    fontFamily: FONTS.Primary_Medium,
-    color: COLORS.Light,
+    fontSize: 18,
+    fontWeight: '500',
+    lineHeight: 21,
+    fontFamily: FONTS.Primary_Regular,
+    color: COLORS.Primary_Text,
     textAlign: 'center',
   },
 });

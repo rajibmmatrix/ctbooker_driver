@@ -16,7 +16,7 @@ interface Props {
 
 export enum LType {
   'en',
-  'fn',
+  'fr',
 }
 
 export interface IContext extends ITranslation {
@@ -24,11 +24,11 @@ export interface IContext extends ITranslation {
   changeLanguage?: (params: LType) => void;
 }
 
-export const Translation = createContext<IContext>(language.fn);
+export const Translation = createContext<IContext>(language.fr);
 
 export default function TranslationProvider(props: Props) {
-  const [lang, setLang] = useState<ITranslation>(language.fn);
-  const [type, setType] = useState<LType>(LType.fn);
+  const [lang, setLang] = useState<ITranslation>(language.fr);
+  const [type, setType] = useState<LType>(LType.fr);
   const [isLangSet, setIsLangSet] = useState(false);
 
   const changeLanguage = useCallback(
@@ -38,8 +38,8 @@ export default function TranslationProvider(props: Props) {
       }
       if (value === LType.en) {
         setLang(language.en);
-      } else if (value === LType.fn) {
-        setLang(language.fn);
+      } else if (value === LType.fr) {
+        setLang(language.fr);
       }
       setType(value);
       setIsLangSet(true);
@@ -61,12 +61,12 @@ export default function TranslationProvider(props: Props) {
       if (isLang === LType.en) {
         setLang(language.en);
         setIsLangSet(true);
-      } else if (isLang === LType.fn) {
-        setLang(language.fn);
+      } else if (isLang === LType.fr) {
+        setLang(language.fr);
         setIsLangSet(true);
       } else {
-        setType(LType.fn);
-        setLang(language.fn);
+        setType(LType.fr);
+        setLang(language.fr);
         setIsLangSet(true);
       }
       updateLanguage(isLang);

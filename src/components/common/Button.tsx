@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
-import {COLORS} from '~styles';
+import {COLORS, FONTS} from '~styles';
 
 interface Props {
   title: string;
@@ -38,15 +38,19 @@ export default memo(Button);
 const styles = StyleSheet.create({
   button: {
     height: 50,
-    width: 135,
+    width: 185,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: COLORS.Primary,
-    borderRadius: 50,
+    borderRadius: 100,
   },
   title: {
-    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: '700',
+    fontFamily: FONTS.Primary_Bold,
     textTransform: 'uppercase',
-    color: COLORS.Primary_Link,
+    textAlign: 'center',
+    color: COLORS.Light,
+    lineHeight: 16,
   },
 });

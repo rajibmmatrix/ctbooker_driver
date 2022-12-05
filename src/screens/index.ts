@@ -5,8 +5,6 @@ export {default as LoginScreen} from './auth/Login/Login';
 export {default as SignupScreen} from './auth/Signup/Signup';
 export {default as ForgotScreen} from './auth/Forgot/Forgot';
 
-export {default as LogoutScreen} from './auth/Logout/Logout';
-
 //App Screen
 export {default as HomeScreen} from './Home/Home';
 export {default as BookingScreen} from './Booking/Booking';

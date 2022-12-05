@@ -36,7 +36,7 @@ export const deleteToken = async (): Promise<boolean> => {
 
 export enum LType {
   'en',
-  'fn',
+  'fr',
 }
 
 //For handel language state

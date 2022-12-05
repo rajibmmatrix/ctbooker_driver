@@ -1,12 +1,19 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TabScreenProps} from 'types';
+import {Container, Header} from '~common';
+import {useTranslations} from '~translation';
 
 export default function HomeScreen({}: TabScreenProps<'Home'>) {
+  const translations = useTranslations();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home Screen</Text>
-    </View>
+    <Container>
+      <Header title={translations.welcome} />
+      <View style={styles.container}>
+        <Text style={styles.title}>Home Screen</Text>
+      </View>
+    </Container>
   );
 }
 
