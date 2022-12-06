@@ -128,4 +128,5 @@ export interface ITranslation {
   price: string;
   reservation: string;
   summary: string;
+  new_reservation_request: string;
 }

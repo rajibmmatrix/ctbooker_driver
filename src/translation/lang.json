@@ -30,7 +30,8 @@
         "to_refuse": "Refuser",
         "price": "Prix",
         "reservation": "Réservation",
-        "summary": "Résumé"
+        "summary": "Résumé",
+        "new_reservation_request": "Nouvelle demande de réservation"
     },
     "en": {
         "welcome": "Welcome",
@@ -63,6 +64,7 @@
         "to_refuse": "To refuse",
         "price": "Price",
         "reservation": "Reservation",
-        "summary": "Summary"
+        "summary": "Summary",
+        "new_reservation_request": "New reservation request"
     }
 }

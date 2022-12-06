@@ -12,7 +12,13 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
 
   return (
     <Container>
-      <Header title={translations.summary} />
+      <Header
+        title={
+          isSelected
+            ? translations.summary
+            : translations.new_reservation_request
+        }
+      />
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={styles.header}>
           <View style={styles.card}>
