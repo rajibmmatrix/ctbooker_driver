@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 14,
     fontWeight: '500',
-    fontFamily: FONTS.Primary_Regular,
+    fontFamily: FONTS.Primary_Medium,
     lineHeight: 16,
     color: COLORS.Light,
     marginLeft: 3,

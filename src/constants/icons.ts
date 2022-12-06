@@ -15,6 +15,8 @@ export {default as HouseActive} from '../assets/icons/house_active.svg';
 export {default as Driving} from '../assets/icons/driving.svg';
 export {default as DrivingActive} from '../assets/icons/driving_active.svg';
 export {default as SmallUser} from '../assets/icons/small_user.svg';
+export {default as SmallCar} from '../assets/icons/small_car.svg';
+export {default as BigDriving} from '../assets/icons/big_driving.svg';
 
 export {default as MenuDocument} from '../assets/icons/menu_document.svg';
 export {default as MenuExport} from '../assets/icons/menu_export.svg';
