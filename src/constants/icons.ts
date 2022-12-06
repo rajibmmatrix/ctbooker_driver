@@ -13,6 +13,7 @@ export {default as User} from '../assets/icons/user.svg';
 export {default as House} from '../assets/icons/house.svg';
 export {default as HouseActive} from '../assets/icons/house_active.svg';
 export {default as Driving} from '../assets/icons/driving.svg';
+export {default as DrivingActive} from '../assets/icons/driving_active.svg';
 export {default as SmallUser} from '../assets/icons/small_user.svg';
 
 export {default as MenuDocument} from '../assets/icons/menu_document.svg';
