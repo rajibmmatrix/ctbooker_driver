@@ -29,7 +29,8 @@
         "accept": "Accepter",
         "to_refuse": "Refuser",
         "price": "Prix",
-        "reservation": "Réservation"
+        "reservation": "Réservation",
+        "summary": "Résumé"
     },
     "en": {
         "welcome": "Welcome",
@@ -61,6 +62,7 @@
         "accept": "Accept",
         "to_refuse": "To refuse",
         "price": "Price",
-        "reservation": "Reservation"
+        "reservation": "Reservation",
+        "summary": "Summary"
     }
 }

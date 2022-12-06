@@ -127,4 +127,5 @@ export interface ITranslation {
   to_refuse: string;
   price: string;
   reservation: string;
+  summary: string;
 }

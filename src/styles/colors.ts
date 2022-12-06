@@ -9,6 +9,7 @@ export const COLORS = {
   Primary_Link: '#0D0D0D',
   Primary_Card: '#FBFBFD',
   Primary_Border: '#DDDDDD',
+  Secondary_Border: '#F5F5F5',
   Primary_Modal: '#00000080',
-  Others: ['#5D5BE6', '#EEFF26', '#ACACC1'],
+  Others: ['#5D5BE6', '#EEFF26', '#ACACC1', '#F9EAFF'],
 };

@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
+import {SvgProps} from 'react-native-svg';
 import {COLORS, FONTS} from '~styles';
 
 interface Props {
@@ -35,6 +36,27 @@ const Button: FC<Props> = ({
 
 export default memo(Button);
 
+interface IBProps extends Props {
+  Icon: FC<SvgProps>;
+  color?: string;
+}
+
+export const IconButton: FC<IBProps> = memo(
+  ({Icon, title, disabled, onPress, color, style, textStyle}) => {
+    const bg = color ? {backgroundColor: color} : null;
+
+    return (
+      <TouchableOpacity
+        onPress={onPress}
+        disabled={disabled}
+        style={[styles.iconButton, style, bg]}>
+        <Icon width={20} height={20} />
+        <Text style={[styles.buttonTitle, textStyle]}>{title}</Text>
+      </TouchableOpacity>
+    );
+  },
+);
+
 const styles = StyleSheet.create({
   button: {
     height: 50,
@@ -52,5 +74,22 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: COLORS.Light,
     lineHeight: 16,
+  },
+  iconButton: {
+    height: 48,
+    width: 144,
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.Buttons[2],
+  },
+  buttonTitle: {
+    fontSize: 17,
+    fontWeight: '600',
+    fontFamily: FONTS.Primary_Bold,
+    lineHeight: 20,
+    color: COLORS.Light,
+    marginLeft: 6,
   },
 });
