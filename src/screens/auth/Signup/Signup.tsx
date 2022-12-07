@@ -10,7 +10,7 @@ import {loading, useDispatch} from '~app';
 
 export default function SignupScreen({navigation}: StackScreenProps<'Signup'>) {
   const dispatch = useDispatch();
-  const translations = useTranslations();
+  const {translation} = useTranslations();
   const [form, setForm] = useState({email: '', password: ''});
 
   const handleSignup = () => {
@@ -25,27 +25,27 @@ export default function SignupScreen({navigation}: StackScreenProps<'Signup'>) {
 
   return (
     <AuthContainer
-      title={translations.register}
-      description={translations.please_register_to_continue}>
+      title={translation.register}
+      description={translation.please_register_to_continue}>
       <View style={styles.container}>
         <SignupButton
           Icon={Icons.Profile}
           isSelected={false}
           color={COLORS.Buttons[1]}
-          title={translations.individual}
+          title={translation.individual}
           onPress={() => {}}
         />
         <SignupButton
           Icon={Icons.UserSquare}
           isSelected={false}
           color={COLORS.Buttons[0]}
-          title={translations.profesonal}
+          title={translation.profesonal}
           style={styles.topButton}
           onPress={() => {}}
         />
         <Input
           Icon={Icons.User}
-          title={translations.fname}
+          title={translation.fname}
           placeholder="Jhone"
           onChangeText={value => setForm(prev => ({...prev, email: value}))}
           value={form.email}
@@ -71,13 +71,13 @@ export default function SignupScreen({navigation}: StackScreenProps<'Signup'>) {
           value={form.password}
         />
         <Button
-          title={translations.register}
+          title={translation.register}
           onPress={handleSignup}
           style={styles.button}
         />
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.link}>
-            {translations.already_have_an_account_login}
+            {translation.already_have_an_account_login}
           </Text>
         </TouchableOpacity>
       </View>

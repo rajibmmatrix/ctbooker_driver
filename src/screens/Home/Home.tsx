@@ -14,11 +14,11 @@ import {COLORS, FONTS, _styles} from '~styles';
 import {useTranslations} from '~translation';
 
 export default function HomeScreen({navigation}: TabScreenProps<'Home'>) {
-  const translations = useTranslations();
+  const {translation} = useTranslations();
 
   return (
     <Container>
-      <Header title={translations.welcome} />
+      <Header title={translation.welcome} />
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={_styles.rowCenter}>
           <Image source={IMAGES.Logo} style={styles.headerLogo} />
@@ -34,7 +34,7 @@ export default function HomeScreen({navigation}: TabScreenProps<'Home'>) {
           onPress={() => navigation.navigate('Booking')}
           style={styles.body}>
           <Icons.BigDriving width={74} height={74} />
-          <Text style={styles.bigTitle}>{translations.summary}</Text>
+          <Text style={styles.bigTitle}>{translation.summary}</Text>
         </TouchableOpacity>
         <View style={styles.footer}>
           <View style={_styles.container}>

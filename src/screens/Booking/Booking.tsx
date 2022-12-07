@@ -7,23 +7,21 @@ import {COLORS, FONTS, _styles} from '~styles';
 import {Icons} from '~constants';
 
 export default function BookingScreen({}: TabScreenProps<'Booking'>) {
-  const translations = useTranslations();
+  const {translation} = useTranslations();
   const [isSelected, setIsSelected] = useState(false);
 
   return (
     <Container>
       <Header
         title={
-          isSelected
-            ? translations.summary
-            : translations.new_reservation_request
+          isSelected ? translation.summary : translation.new_reservation_request
         }
       />
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={styles.header}>
           <View style={styles.card}>
             <Text style={[styles.title, styles.mb7]}>
-              {translations.date_of_withdrawal}
+              {translation.date_of_withdrawal}
             </Text>
             <View style={_styles.rowCenter}>
               <Icons.SmallCalendar width={16} height={16} />
@@ -32,7 +30,7 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
           </View>
           <View style={styles.card}>
             <Text style={[styles.title, styles.mb7]}>
-              {translations.withdrawal_time}
+              {translation.withdrawal_time}
             </Text>
             <View style={_styles.rowCenter}>
               <Icons.SmallClock width={16} height={16} />
@@ -42,13 +40,13 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
         </View>
         <View style={styles.ph9}>
           <Text style={[styles.title, styles.mt26]}>
-            {translations.type_of_assignment}
+            {translation.type_of_assignment}
           </Text>
           <Text style={[styles.description, styles.mt15]}>
             Contrôle technique
           </Text>
           <Text style={[styles.title, styles.mt26]}>
-            {translations.pick_up_location}
+            {translation.pick_up_location}
           </Text>
           <View style={[_styles.rowCenter, styles.mt15]}>
             <Icons.SmallLocation />
@@ -57,7 +55,7 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
             </Text>
           </View>
           <Text style={[styles.title, styles.mt26]}>
-            {translations.drop_off_point}
+            {translation.drop_off_point}
           </Text>
           <View style={[_styles.rowCenter, styles.mt15]}>
             <Icons.SmallRouting />
@@ -68,16 +66,16 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
           <View style={[_styles.allCenter, styles.icon]}>
             <Icons.BigWallet width={52} height={52} />
           </View>
-          <Text style={styles.price}>{translations.price}: 40 €</Text>
+          <Text style={styles.price}>{translation.price}: 40 €</Text>
           {!isSelected && (
             <View style={styles.footer}>
               <IconButton
-                title={translations.accept}
+                title={translation.accept}
                 Icon={Icons.RadioSelected}
                 onPress={() => setIsSelected(true)}
               />
               <IconButton
-                title={translations.to_refuse}
+                title={translation.to_refuse}
                 Icon={Icons.Radio}
                 color={COLORS.Buttons[3]}
                 onPress={() => setIsSelected(true)}

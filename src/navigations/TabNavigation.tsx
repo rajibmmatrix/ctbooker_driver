@@ -34,7 +34,7 @@ const Tabs: FC<Props> = memo(({title, onPress, accessibilityState, icons}) => {
 });
 
 export default function TabNavigation() {
-  const translations = useTranslations();
+  const {translation} = useTranslations();
 
   return (
     <Tab.Navigator
@@ -47,11 +47,11 @@ export default function TabNavigation() {
         name="Home"
         component={HomeScreen}
         options={{
-          title: translations.welcome,
+          title: translation.welcome,
           tabBarButton: props => (
             <Tabs
               {...props}
-              title={translations.welcome}
+              title={translation.welcome}
               icons={[Icons.HouseActive, Icons.House]}
             />
           ),
@@ -61,11 +61,11 @@ export default function TabNavigation() {
         name="Booking"
         component={BookingScreen}
         options={{
-          title: translations.reservation,
+          title: translation.reservation,
           tabBarButton: props => (
             <Tabs
               {...props}
-              title={translations.reservation}
+              title={translation.reservation}
               icons={[Icons.DrivingActive, Icons.Driving]}
             />
           ),
@@ -75,11 +75,11 @@ export default function TabNavigation() {
         name="Profile"
         component={ProfileScreen}
         options={{
-          title: translations.my_profile,
+          title: translation.my_profile,
           tabBarButton: props => (
             <Tabs
               {...props}
-              title={translations.my_profile}
+              title={translation.my_profile}
               icons={[Icons.SmallUser, Icons.SmallUser]}
             />
           ),

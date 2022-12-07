@@ -10,7 +10,7 @@ import {loading, useDispatch} from '~app';
 
 export default function LoginScreen({navigation}: StackScreenProps<'Login'>) {
   const dispatch = useDispatch();
-  const translations = useTranslations();
+  const {translation} = useTranslations();
   const [form, setForm] = useState({email: '', password: ''});
 
   const handleLogin = () => {
@@ -25,12 +25,13 @@ export default function LoginScreen({navigation}: StackScreenProps<'Login'>) {
 
   return (
     <AuthContainer
-      title={translations.to_login}
-      description={translations.please_login_to_continue}>
+      title={translation.to_login}
+      description={translation.please_login_to_continue}>
       <View style={styles.container}>
         <Input
           Icon={Icons.SMS}
-          title={translations.email}
+          title={translation.email}
+          placeholder={translation.email}
           autoCapitalize="none"
           onChangeText={value => setForm(prev => ({...prev, email: value}))}
           value={form.email}
@@ -43,17 +44,17 @@ export default function LoginScreen({navigation}: StackScreenProps<'Login'>) {
           value={form.password}
         />
         <Button
-          title={translations.login}
+          title={translation.login}
           onPress={handleLogin}
           style={styles.button}
         />
         <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>
-          <Text style={styles.link}>{translations.forgot_password}</Text>
+          <Text style={styles.link}>{translation.forgot_password}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('Signup')}
           style={styles.footer}>
-          <Text style={styles.footerLink}>{translations.signup}</Text>
+          <Text style={styles.footerLink}>{translation.signup}</Text>
         </TouchableOpacity>
       </View>
     </AuthContainer>

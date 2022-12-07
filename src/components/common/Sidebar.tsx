@@ -27,7 +27,7 @@ const Item: FC<Props> = memo(({title, Icon, style, onPress}) => {
 });
 
 const Sidebar: FC<DrawerContentComponentProps> = props => {
-  const translations = useTranslations();
+  const {translation} = useTranslations();
 
   return (
     <DrawerContentScrollView {...props} style={styles.container}>
@@ -35,32 +35,32 @@ const Sidebar: FC<DrawerContentComponentProps> = props => {
         <Icons.MenuClose width={24} height={24} />
       </TouchableOpacity>
       <Item
-        title={translations.welcome}
+        title={translation.welcome}
         Icon={Icons.MenuHouse}
         onPress={() => props.navigation.navigate('Tab', {screen: 'Home'})}
       />
       <Item
-        title={translations.my_profile}
+        title={translation.my_profile}
         Icon={Icons.MenuUser}
         onPress={() => props.navigation.navigate('Tab', {screen: 'Profile'})}
       />
       <Item
-        title={translations.change_password}
+        title={translation.change_password}
         Icon={Icons.MenuLock}
         onPress={() => props.navigation.navigate('ChangePassword')}
       />
       <Item
-        title={translations.vehicle_documents}
+        title={translation.vehicle_documents}
         Icon={Icons.MenuDocument}
         onPress={() => props.navigation.navigate('VehicleDocuments')}
       />
       <Item
-        title={translations.payment}
+        title={translation.payment}
         Icon={Icons.MenuWallet}
         onPress={() => props.navigation.navigate('Payment')}
       />
       <Item
-        title={translations.signout}
+        title={translation.signout}
         Icon={Icons.MenuExport}
         onPress={() => {
           props.navigation.dispatch(
