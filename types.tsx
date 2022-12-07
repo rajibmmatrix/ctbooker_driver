@@ -72,6 +72,7 @@ export interface CONFIG {
   mode: MODE;
   lang: ILANG;
   version: string;
+  lang_version: string;
   baseURL: string;
   termsURL: string;
   policyURL: string;
