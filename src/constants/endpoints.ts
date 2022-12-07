@@ -3,7 +3,7 @@ import config from '~config';
 export const baseURL = config.baseURL;
 
 export const URL = {
-  lang: '/upload/json/lang-client.json',
+  lang: '/upload/json/lang-chauffeur.json',
   //Auth
   getUser: '/auth/customer',
   login: '/auth/login',

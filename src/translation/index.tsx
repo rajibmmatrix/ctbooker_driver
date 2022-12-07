@@ -68,11 +68,11 @@ export default function Translations({children}: Props) {
       },
       updateLanguage: () => {
         axios
-          .get(baseURL + URL.lang, {headers: {type: 'client'}})
+          .get(baseURL + URL.lang, {headers: {type: 'chauffeur'}})
           .then(({data}: {data: ITranslation}) => {
             dispatch({type: Actions.Update_Language, payload: data});
           })
-          .catch(err => console.log(err));
+          .catch(err => console.log(JSON.stringify(err)));
       },
       completed: () => dispatch({type: Actions.Completed}),
     }),
