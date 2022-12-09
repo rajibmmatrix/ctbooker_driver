@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {SvgProps} from 'react-native-svg';
-import {COLORS, FONTS} from '~styles';
+import {COLORS, FONTS, fontSize} from '~styles';
 
 interface Props {
   title: string;
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   title: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: '700',
     fontFamily: FONTS.Primary_Bold,
     textTransform: 'uppercase',
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.Buttons[2],
   },
   buttonTitle: {
-    fontSize: 17,
+    fontSize: fontSize(17),
     fontWeight: '600',
     fontFamily: FONTS.Primary_Bold,
     lineHeight: 20,

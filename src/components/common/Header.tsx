@@ -2,7 +2,7 @@ import React, {FC, memo} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Icons} from '~constants';
-import {COLORS, FONTS, _styles} from '~styles';
+import {COLORS, FONTS, fontSize, _styles} from '~styles';
 
 interface Props {
   title: string;
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     height: 25,
   },
   title: {
-    fontSize: 18,
+    fontSize: fontSize(18),
     fontWeight: '500',
     lineHeight: 21,
     fontFamily: FONTS.Primary_Regular,

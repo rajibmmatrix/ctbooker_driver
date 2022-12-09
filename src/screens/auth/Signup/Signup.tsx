@@ -4,7 +4,7 @@ import {CommonActions} from '@react-navigation/native';
 import {AuthContainer, Button, Input, SignupButton} from '~components';
 import {useTranslations} from '~translation';
 import {Icons} from '~constants';
-import {COLORS, FONTS} from '~styles';
+import {COLORS, FONTS, fontSize, SIZES} from '~styles';
 import {StackScreenProps} from 'types';
 import {loading, useDispatch} from '~app';
 
@@ -88,18 +88,18 @@ export default function SignupScreen({navigation}: StackScreenProps<'Signup'>) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 31,
+    marginTop: SIZES.V15 * 2,
   },
   topButton: {
     marginBottom: 24,
   },
   button: {
-    marginTop: 22,
+    marginTop: SIZES.V22,
     marginBottom: 35,
     alignSelf: 'center',
   },
   link: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: '400',
     fontFamily: FONTS.Primary_Regular,
     color: COLORS.Dark,

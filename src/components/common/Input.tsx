@@ -8,7 +8,7 @@ import {
   TextInput,
 } from 'react-native';
 import {SvgProps} from 'react-native-svg';
-import {COLORS, FONTS, _styles} from '~styles';
+import {COLORS, FONTS, fontSize, SIZES, _styles} from '~styles';
 
 interface Props extends TextInputProps {
   title?: string;
@@ -63,18 +63,18 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.Primary_Card,
   },
   title: {
-    fontSize: 12,
+    fontSize: fontSize(12),
     lineHeight: 14,
     fontWeight: '400',
     fontFamily: FONTS.Primary_Regular,
     color: COLORS.Primary_Text,
     textTransform: 'uppercase',
     marginLeft: 46,
-    marginTop: 12,
+    marginTop: SIZES.V12,
   },
   body: {
     paddingBottom: 5,
-    paddingHorizontal: 16,
+    paddingHorizontal: SIZES.H15,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   inputText: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     lineHeight: 16,
     fontWeight: '700',
     fontFamily: FONTS.Primary_Bold,

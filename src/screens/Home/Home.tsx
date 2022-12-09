@@ -10,7 +10,7 @@ import {
 import {TabScreenProps} from 'types';
 import {Container, Header} from '~common';
 import {Icons, IMAGES} from '~constants';
-import {COLORS, FONTS, _styles} from '~styles';
+import {COLORS, FONTS, fontSize, _styles} from '~styles';
 import {useTranslations} from '~translation';
 
 export default function HomeScreen({navigation}: TabScreenProps<'Home'>) {
@@ -68,14 +68,14 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   title: {
-    fontSize: 18,
+    fontSize: fontSize(18),
     fontWeight: '700',
     fontFamily: FONTS.Primary_Bold,
     lineHeight: 21,
     color: COLORS.Dark,
   },
   description: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: '400',
     fontFamily: FONTS.Primary_Regular,
     color: COLORS.Primary_Text,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.Primary,
   },
   bigTitle: {
-    fontSize: 22,
+    fontSize: fontSize(22),
     fontWeight: '700',
     fontFamily: FONTS.Secondary_Bold,
     lineHeight: 33,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   footerTitle: {
-    fontSize: 22,
+    fontSize: fontSize(22),
     fontWeight: '500',
     fontFamily: FONTS.Primary_Medium,
     lineHeight: 26,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.Primary_Link,
   },
   buttonTitle: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: '500',
     fontFamily: FONTS.Primary_Medium,
     lineHeight: 16,

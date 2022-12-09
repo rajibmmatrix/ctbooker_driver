@@ -4,7 +4,7 @@ import {CommonActions} from '@react-navigation/native';
 import {AuthContainer, Button, Input} from '~components';
 import {useTranslations} from '~translation';
 import {Icons} from '~constants';
-import {COLORS, FONTS} from '~styles';
+import {COLORS, FONTS, fontSize} from '~styles';
 import {StackScreenProps} from 'types';
 import {loading, useDispatch} from '~app';
 
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   link: {
-    fontSize: 12,
+    fontSize: fontSize(12),
     fontWeight: '400',
     fontFamily: FONTS.Primary_Regular,
     color: COLORS.Primary,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   footerLink: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: '400',
     fontFamily: FONTS.Primary_Regular,
     color: COLORS.Dark,

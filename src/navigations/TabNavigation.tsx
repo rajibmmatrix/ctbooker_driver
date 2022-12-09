@@ -7,7 +7,7 @@ import {
 import {SvgProps} from 'react-native-svg';
 import {BookingScreen, HomeScreen, ProfileScreen} from '~screens';
 import {Icons} from '~constants';
-import {COLORS, FONTS} from '~styles';
+import {COLORS, FONTS, fontSize, SIZES} from '~styles';
 import {useTranslations} from '~translation';
 import {TabParamList} from 'types';
 
@@ -80,7 +80,7 @@ export default function TabNavigation() {
             <Tabs
               {...props}
               title={translation.my_profile}
-              icons={[Icons.SmallUser, Icons.SmallUser]}
+              icons={[Icons.SmallUserActive, Icons.SmallUser]}
             />
           ),
         }}
@@ -91,10 +91,15 @@ export default function TabNavigation() {
 
 const styles = StyleSheet.create({
   tabBar: {
+    bottom: 0,
     height: 60,
+    borderWidth: 1,
+    position: 'absolute',
+    borderBottomWidth: 0,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: COLORS.Light,
+    borderColor: COLORS.Primary_Border,
   },
   buttonContainer: {
     flex: 1,
@@ -107,7 +112,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: SIZES.H10 * 2,
     borderRadius: 100,
   },
   active: {
@@ -115,11 +120,11 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.Primary_Link,
   },
   title: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: '500',
     fontFamily: FONTS.Primary_Medium,
     lineHeight: 16,
     color: COLORS.Light,
-    marginLeft: 3,
+    marginLeft: SIZES.H3,
   },
 });

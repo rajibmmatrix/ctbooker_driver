@@ -1,7 +1,7 @@
 import React, {FC, memo} from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from '~app';
-import {COLORS, FONTS} from '~styles';
+import {COLORS, FONTS, fontSize} from '~styles';
 
 const Spinner: FC = () => {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   title: {
-    fontSize: 16,
+    fontSize: fontSize(16),
     fontWeight: '700',
     fontFamily: FONTS.Primary_Bold,
     color: COLORS.Dark,

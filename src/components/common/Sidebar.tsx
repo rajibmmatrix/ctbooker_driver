@@ -7,7 +7,7 @@ import {
 } from '@react-navigation/drawer';
 import {SvgProps} from 'react-native-svg';
 import {Icons} from '~constants';
-import {COLORS, FONTS} from '~styles';
+import {COLORS, FONTS, fontSize} from '~styles';
 import {useTranslations} from '~translation';
 
 interface Props {
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 13,
+    fontSize: fontSize(13),
     fontWeight: '400',
     fontFamily: FONTS.Primary_Regular,
     color: COLORS.Dark,

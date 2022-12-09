@@ -15,6 +15,7 @@ export {default as HouseActive} from '../assets/icons/house_active.svg';
 export {default as Driving} from '../assets/icons/driving.svg';
 export {default as DrivingActive} from '../assets/icons/driving_active.svg';
 export {default as SmallUser} from '../assets/icons/small_user.svg';
+export {default as SmallUserActive} from '../assets/icons/user_active.svg';
 export {default as SmallCar} from '../assets/icons/small_car.svg';
 export {default as BigDriving} from '../assets/icons/big_driving.svg';
 export {default as BigWallet} from '../assets/icons/big_wallet.svg';

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {SvgProps} from 'react-native-svg';
 import {Icons} from '~constants';
-import {COLORS, FONTS} from '~styles';
+import {COLORS, FONTS, fontSize, SIZES} from '~styles';
 
 interface Props {
   title: string;
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 16,
+    marginBottom: SIZES.V15,
     paddingHorizontal: 23,
     borderRadius: 22,
   },
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 16,
+    fontSize: fontSize(16),
     fontWeight: '700',
     lineHeight: 24,
     fontFamily: FONTS.Secondary_Semibold,

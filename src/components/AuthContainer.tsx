@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {IMAGES} from '~constants';
-import {COLORS, FONTS} from '~styles';
+import {COLORS, FONTS, fontSize, screenHeight} from '~styles';
 
 interface Props {
   title: string;
@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.Primary_Card,
   },
   image: {
-    height: 400,
     width: '100%',
+    height: screenHeight * 0.4,
     backgroundColor: COLORS.Primary,
   },
   logo: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.Primary_Card,
   },
   title: {
-    fontSize: 24,
+    fontSize: fontSize(24),
     fontWeight: '700',
     lineHeight: 28,
     fontFamily: FONTS.Primary_Bold,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     marginLeft: 63 - 45,
   },
   description: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: '400',
     lineHeight: 16,
     fontFamily: FONTS.Primary_Regular,

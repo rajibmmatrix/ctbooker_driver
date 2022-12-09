@@ -3,7 +3,7 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Container, Header, IconButton} from '~common';
 import {useTranslations} from '~translation';
 import {TabScreenProps} from 'types';
-import {COLORS, FONTS, _styles} from '~styles';
+import {COLORS, FONTS, fontSize, SIZES, _styles} from '~styles';
 import {Icons} from '~constants';
 
 export default function BookingScreen({}: TabScreenProps<'Booking'>) {
@@ -91,7 +91,7 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    paddingTop: SIZES.V15,
     paddingHorizontal: 16,
   },
   header: {
@@ -102,29 +102,29 @@ const styles = StyleSheet.create({
   card: {
     borderWidth: 1,
     borderRadius: 14,
-    paddingVertical: 18,
-    paddingHorizontal: 30,
+    paddingVertical: SIZES.V18,
+    paddingHorizontal: SIZES.H15 * 2,
     borderColor: COLORS.Secondary_Border,
   },
   title: {
-    fontSize: 18,
+    fontSize: fontSize(18),
     fontWeight: '700',
     fontFamily: FONTS.Primary_Bold,
     lineHeight: 21,
     color: COLORS.Primary_Link,
   },
   description: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: '500',
     fontFamily: FONTS.Primary_Medium,
     lineHeight: 16,
     color: COLORS.Dark,
   },
-  ml4: {marginLeft: 4},
-  ml10: {marginLeft: 10},
+  ml4: {marginLeft: SIZES.H2 * 2},
+  ml10: {marginLeft: SIZES.H10},
   mb7: {marginBottom: 7},
   mt26: {marginTop: 26},
-  mt15: {marginTop: 15},
+  mt15: {marginTop: SIZES.V15},
   ph9: {paddingHorizontal: 9},
   icon: {
     width: 79,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   price: {
-    fontSize: 19,
+    fontSize: fontSize(19),
     fontWeight: '500',
     fontFamily: FONTS.Primary_Medium,
     lineHeight: 22,
