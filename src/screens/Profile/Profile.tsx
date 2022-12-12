@@ -5,7 +5,7 @@ import {TabScreenProps} from 'types';
 export default function ProfileScreen({}: TabScreenProps<'Profile'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Profile Screen</Text>
+      <Text style={styles.title}>Coming soon</Text>
     </View>
   );
 }

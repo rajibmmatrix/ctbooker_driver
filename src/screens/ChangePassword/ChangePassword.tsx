@@ -5,7 +5,7 @@ import {SideScreenProps} from 'types';
 export default function ChangePasswordScreen({}: SideScreenProps<'ChangePassword'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>ChangePassword Screen</Text>
+      <Text style={styles.title}>Coming soon</Text>
     </View>
   );
 }

@@ -5,7 +5,7 @@ import {SideScreenProps} from 'types';
 export default function PaymentScreen({}: SideScreenProps<'Payment'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Payment Screen</Text>
+      <Text style={styles.title}>Coming soon</Text>
     </View>
   );
 }

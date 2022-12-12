@@ -20,11 +20,12 @@ export default function LoginScreen({navigation}: StackScreenProps<'Login'>) {
       navigation.dispatch(
         CommonActions.reset({index: 1, routes: [{name: 'Sidebar'}]}),
       );
-    }, 3000);
+    }, 1500);
   };
 
   return (
     <AuthContainer
+      scrollEnabled={false}
       title={translation.to_login}
       description={translation.please_login_to_continue}>
       <View style={styles.container}>

@@ -5,7 +5,7 @@ import {SideScreenProps} from 'types';
 export default function VehicleDocumentsScreen({}: SideScreenProps<'VehicleDocuments'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>VehicleDocuments Screen</Text>
+      <Text style={styles.title}>Coming soon</Text>
     </View>
   );
 }

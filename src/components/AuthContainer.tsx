@@ -14,11 +14,20 @@ interface Props {
   title: string;
   description: string;
   children: ReactNode;
+  scrollEnabled?: boolean;
 }
 
-const AuthContainer: FC<Props> = ({title, description, children}) => {
+const AuthContainer: FC<Props> = ({
+  title,
+  description,
+  children,
+  scrollEnabled = true,
+}) => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+    <ScrollView
+      scrollEnabled={scrollEnabled}
+      showsVerticalScrollIndicator={false}
+      style={styles.container}>
       <ImageBackground source={IMAGES.Background} style={styles.image}>
         <Image source={IMAGES.Logo} style={styles.logo} />
       </ImageBackground>

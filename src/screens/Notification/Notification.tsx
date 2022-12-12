@@ -5,7 +5,7 @@ import {SideScreenProps} from 'types';
 export default function NotificationScreen({}: SideScreenProps<'Notification'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Notification Screen</Text>
+      <Text style={styles.title}>Coming soon</Text>
     </View>
   );
 }

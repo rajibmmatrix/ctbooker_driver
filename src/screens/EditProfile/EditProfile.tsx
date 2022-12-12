@@ -5,7 +5,7 @@ import {SideScreenProps} from 'types';
 export default function EditProfileScreen({}: SideScreenProps<'EditProfile'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>EditProfile Screen</Text>
+      <Text style={styles.title}>Coming soon</Text>
     </View>
   );
 }

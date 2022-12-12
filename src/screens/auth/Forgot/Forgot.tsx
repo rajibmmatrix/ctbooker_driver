@@ -5,7 +5,7 @@ import {StackScreenProps} from 'types';
 export default function ForgotScreen({}: StackScreenProps<'Forgot'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Forgot Screen</Text>
+      <Text style={styles.title}>Coming soon</Text>
     </View>
   );
 }
