@@ -11,5 +11,6 @@ export const COLORS = {
   Primary_Border: '#DDDDDD',
   Secondary_Border: '#F5F5F5',
   Primary_Modal: '#00000080',
+  Secondary_Modal: '#000000bf',
   Others: ['#5D5BE6', '#EEFF26', '#ACACC1', '#F9EAFF'],
 };

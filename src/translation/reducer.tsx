@@ -12,7 +12,11 @@ const reducer = (state: IState, action: any) => {
     case Actions.Change_Language:
       return {...state, type: action.payload};
     case Actions.Update_Language:
-      return {...state, lang: action.payload};
+      return {
+        ...state,
+        lang: action.payload.lang,
+        version: action.payload.version,
+      };
     case Actions.Completed:
       return {...state, complete: true};
     default:
