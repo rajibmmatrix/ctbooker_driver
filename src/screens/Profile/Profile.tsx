@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TabScreenProps} from 'types';
+import {COLORS, FONTS, fontSize} from '~styles';
 
 export default function ProfileScreen({}: TabScreenProps<'Profile'>) {
   return (
@@ -15,11 +16,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: COLORS.Light,
   },
   title: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#000000',
+    fontSize: fontSize(14),
+    fontFamily: FONTS.Primary_Bold,
+    color: COLORS.Dark,
   },
 });

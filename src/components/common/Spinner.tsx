@@ -1,12 +1,14 @@
 import React, {FC, memo} from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from '~app';
-import {COLORS, FONTS, fontSize} from '~styles';
+import {COLORS, FONTS, fontSize, screenHeight, screenWidth} from '~styles';
 
 const Spinner: FC = () => {
   const isLoading = useSelector(state => state.loading.isLoading);
 
-  if (!isLoading) return null;
+  if (!isLoading) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
@@ -27,8 +29,8 @@ export default memo(Spinner);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
-    height: '100%',
+    width: screenWidth,
+    height: screenHeight,
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
