@@ -8,8 +8,9 @@ export const URL = {
   details: '/api/lang-json?type=chauffeur',
 
   //Auth
-  getUser: '/auth/customer',
-  login: '/auth/login',
-  signup: '/auth/signup',
-  forgot: '/auth/forgot',
+  getUser: '/api/driver/v1/auth/get-user',
+  login: '/api/driver/v1/auth/login-driver',
+  signup: '/api/driver/v1/auth/signup',
+  forgot: '/api/driver/v1/auth/forgot-password',
+  edit_profile: '/driver/v1/auth/edit-profile',
 };

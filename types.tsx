@@ -81,20 +81,17 @@ export interface CONFIG {
 }
 
 export interface ILogin {
-  phone_no: string;
+  email: string;
+  password: string;
 }
 
-export interface IVerify {
-  phone_no: string;
-  otp: string;
-  device_id?: string;
-  device_model?: string;
-  device_type?: string;
+export interface IForgot {
+  email: string;
 }
 
 export interface ISignup {
-  full_name: string;
   email: string;
+  password: string;
 }
 
 export interface ITranslation {
@@ -118,6 +115,8 @@ export interface ITranslation {
   please_register_to_continue: string;
   register: string;
   already_have_an_account_login: string;
+  login_error: string;
+  signup_error: string;
   reserve_now: string;
   date_of_withdrawal: string;
   withdrawal_time: string;

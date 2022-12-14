@@ -2,25 +2,45 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {CommonActions} from '@react-navigation/native';
 import {AuthContainer, Button, Input} from '~components';
-import {useTranslations} from '~translation';
 import {Icons} from '~constants';
+import {useTranslations} from '~translation';
 import {COLORS, FONTS, fontSize} from '~styles';
+import {loading, login, useDispatch} from '~app';
+import {showToaster} from '~utils';
 import {StackScreenProps} from 'types';
-import {loading, useDispatch} from '~app';
 
 export default function LoginScreen({navigation}: StackScreenProps<'Login'>) {
   const dispatch = useDispatch();
   const {translation} = useTranslations();
   const [form, setForm] = useState({email: '', password: ''});
 
+  const checkValidation = () => {
+    let status = false;
+    const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/;
+    if (!form.email.trim()) {
+      status = true;
+    } else if (!reg.test(form.email.trim())) {
+      status = true;
+    } else if (!form.password.trim()) {
+      status = true;
+    }
+    return status;
+  };
+
   const handleLogin = () => {
+    if (checkValidation()) {
+      return showToaster(translation.login_error, 'error');
+    }
     dispatch(loading(true));
-    setTimeout(() => {
-      dispatch(loading(false));
-      navigation.dispatch(
-        CommonActions.reset({index: 1, routes: [{name: 'Sidebar'}]}),
-      );
-    }, 1500);
+    dispatch(login(form))
+      .unwrap()
+      .then(() => {
+        navigation.dispatch(
+          CommonActions.reset({index: 1, routes: [{name: 'Sidebar'}]}),
+        );
+      })
+      .catch(() => {})
+      .finally(() => dispatch(loading(false)));
   };
 
   return (

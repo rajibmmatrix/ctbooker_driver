@@ -1,15 +1,26 @@
 import React, {useEffect} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import Splash from 'react-native-splash-screen';
-import {StackScreenProps} from 'types';
 import {IMAGES} from '~constants';
+import {checkLogin, useDispatch} from '~app';
+import {StackScreenProps} from 'types';
 
 export default function SplashScreen({navigation}: StackScreenProps<'Splash'>) {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    Splash.hide();
-    navigation.replace('Login');
+    dispatch(checkLogin())
+      .unwrap()
+      .then(data => {
+        if (data.isLogin) {
+          return navigation.replace('Sidebar');
+        }
+        navigation.replace('Login');
+      })
+      .catch(() => {})
+      .finally(() => Splash.hide());
     return () => {};
-  }, [navigation]);
+  }, [navigation, dispatch]);
 
   return (
     <View style={styles.container}>
