@@ -20,6 +20,7 @@ export default function SideNavigation() {
       drawerContent={props => <Sidebar {...props} />}
       screenOptions={{
         headerShown: false,
+        drawerType: 'front',
         drawerStyle: {backgroundColor: 'transparent'},
       }}>
       <Drawer.Screen name="Tab" component={TabNavigation} />

@@ -1,14 +1,18 @@
 import React, {FC, memo} from 'react';
-import {StyleSheet, Text, TouchableOpacity, ViewStyle} from 'react-native';
-import {CommonActions} from '@react-navigation/native';
 import {
-  DrawerContentComponentProps,
-  DrawerContentScrollView,
-} from '@react-navigation/drawer';
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
+import {CommonActions} from '@react-navigation/native';
+import {DrawerContentComponentProps} from '@react-navigation/drawer';
 import {SvgProps} from 'react-native-svg';
 import {Icons} from '~constants';
-import {COLORS, FONTS, fontSize} from '~styles';
 import {useTranslations} from '~translation';
+import {loading, logout, useDispatch} from '~app';
+import {COLORS, FONTS, fontSize} from '~styles';
 
 interface Props {
   title: string;
@@ -27,10 +31,24 @@ const Item: FC<Props> = memo(({title, Icon, style, onPress}) => {
 });
 
 const Sidebar: FC<DrawerContentComponentProps> = props => {
+  const dispatch = useDispatch();
   const {translation} = useTranslations();
 
+  const handleLogout = async () => {
+    dispatch(loading(true));
+    dispatch(logout())
+      .unwrap()
+      .then(() => {
+        props.navigation.dispatch(
+          CommonActions.reset({index: 1, routes: [{name: 'Login'}]}),
+        );
+      })
+      .catch(() => {})
+      .finally(() => dispatch(loading(false)));
+  };
+
   return (
-    <DrawerContentScrollView {...props} style={styles.container}>
+    <View style={styles.container}>
       <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
         <Icons.MenuClose width={24} height={24} />
       </TouchableOpacity>
@@ -62,14 +80,10 @@ const Sidebar: FC<DrawerContentComponentProps> = props => {
       <Item
         title={translation.signout}
         Icon={Icons.MenuExport}
-        onPress={() => {
-          props.navigation.dispatch(
-            CommonActions.reset({index: 1, routes: [{name: 'Login'}]}),
-          );
-        }}
+        onPress={handleLogout}
         style={styles.logout}
       />
-    </DrawerContentScrollView>
+    </View>
   );
 };
 

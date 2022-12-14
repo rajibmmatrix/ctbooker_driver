@@ -5,14 +5,19 @@ import {AuthContainer, Button, Input} from '~components';
 import {Icons} from '~constants';
 import {useTranslations} from '~translation';
 import {COLORS, FONTS, fontSize} from '~styles';
-import {loading, login, useDispatch} from '~app';
+import {loading, login, useDispatch, useSelector} from '~app';
 import {showToaster} from '~utils';
 import {StackScreenProps} from 'types';
 
 export default function LoginScreen({navigation}: StackScreenProps<'Login'>) {
   const dispatch = useDispatch();
   const {translation} = useTranslations();
-  const [form, setForm] = useState({email: '', password: ''});
+  const user = useSelector(state => state.auth.user);
+
+  const [form, setForm] = useState({
+    email: user?.email ? user.email : '',
+    password: '',
+  });
 
   const checkValidation = () => {
     let status = false;
