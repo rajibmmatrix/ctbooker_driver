@@ -4,23 +4,77 @@ import {CommonActions} from '@react-navigation/native';
 import {AuthContainer, Button, Input, SignupButton} from '~components';
 import {useTranslations} from '~translation';
 import {Icons} from '~constants';
+import {loading, signup, useDispatch} from '~app';
 import {COLORS, FONTS, fontSize, SIZES} from '~styles';
+import {showToaster} from '~utils';
 import {StackScreenProps} from 'types';
-import {loading, useDispatch} from '~app';
+
+interface INPUT {
+  customer_type: '0' | '1';
+  first_name?: string;
+  last_name?: string;
+  company_name?: string;
+  crn?: string;
+  email: string;
+  password: string;
+}
 
 export default function SignupScreen({navigation}: StackScreenProps<'Signup'>) {
   const dispatch = useDispatch();
   const {translation} = useTranslations();
-  const [form, setForm] = useState({email: '', password: ''});
+  const [form, setForm] = useState<INPUT>({
+    customer_type: '0',
+    first_name: '',
+    last_name: '',
+    company_name: '',
+    crn: '',
+    email: '',
+    password: '',
+  });
+
+  const checkValidation = () => {
+    let status = false;
+    const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/;
+    if (form.customer_type === '0' && !form?.first_name?.trim()) {
+      status = true;
+    } else if (form.customer_type === '0' && !form?.last_name?.trim()) {
+      status = true;
+    } else if (form.customer_type === '1' && !form?.company_name?.trim()) {
+      status = true;
+    } else if (form.customer_type === '1' && !form?.crn?.trim()) {
+      status = true;
+    } else if (!form.email.trim()) {
+      status = true;
+    } else if (!reg.test(form.email.trim())) {
+      status = true;
+    } else if (!form.password.trim()) {
+      status = true;
+    }
+    return status;
+  };
 
   const handleSignup = () => {
+    if (checkValidation()) {
+      return showToaster(translation.signup_error, 'error');
+    }
+    let params = {...form};
+    if (form.customer_type === '0') {
+      delete params.company_name;
+      delete params.crn;
+    } else if (form.customer_type === '1') {
+      delete params.first_name;
+      delete params.last_name;
+    }
     dispatch(loading(true));
-    setTimeout(() => {
-      dispatch(loading(false));
-      navigation.dispatch(
-        CommonActions.reset({index: 1, routes: [{name: 'Sidebar'}]}),
-      );
-    }, 3000);
+    dispatch(signup(params))
+      .unwrap()
+      .then(() => {
+        navigation.dispatch(
+          CommonActions.reset({index: 1, routes: [{name: 'Login'}]}),
+        );
+      })
+      .catch(() => {})
+      .finally(() => dispatch(loading(false)));
   };
 
   return (
@@ -30,32 +84,59 @@ export default function SignupScreen({navigation}: StackScreenProps<'Signup'>) {
       <View style={styles.container}>
         <SignupButton
           Icon={Icons.Profile}
-          isSelected={false}
+          isSelected={form.customer_type === '0'}
           color={COLORS.Buttons[1]}
           title={translation.individual}
-          onPress={() => {}}
+          onPress={() => setForm(prev => ({...prev, customer_type: '0'}))}
         />
         <SignupButton
           Icon={Icons.UserSquare}
-          isSelected={false}
+          isSelected={form.customer_type === '1'}
           color={COLORS.Buttons[0]}
           title={translation.profesonal}
           style={styles.topButton}
-          onPress={() => {}}
+          onPress={() => setForm(prev => ({...prev, customer_type: '1'}))}
         />
-        <Input
-          Icon={Icons.User}
-          title={translation.fname}
-          placeholder="Jhone"
-          onChangeText={value => setForm(prev => ({...prev, email: value}))}
-          value={form.email}
-        />
-        <Input
-          Icon={Icons.User}
-          placeholder="Doe"
-          onChangeText={value => setForm(prev => ({...prev, email: value}))}
-          value={form.email}
-        />
+        {form.customer_type === '0' ? (
+          <>
+            <Input
+              Icon={Icons.User}
+              title={translation.fname}
+              placeholder="Jhone"
+              onChangeText={value => {
+                setForm(prev => ({...prev, first_name: value}));
+              }}
+              value={form.first_name}
+            />
+            <Input
+              Icon={Icons.User}
+              placeholder="Doe"
+              onChangeText={value =>
+                setForm(prev => ({...prev, last_name: value}))
+              }
+              value={form.last_name}
+            />
+          </>
+        ) : (
+          <>
+            <Input
+              Icon={Icons.User}
+              title={translation.company_name}
+              placeholder="Jhone"
+              onChangeText={value => {
+                setForm(prev => ({...prev, company_name: value}));
+              }}
+              value={form.company_name}
+            />
+            <Input
+              Icon={Icons.User}
+              title={translation.crn}
+              placeholder="CR001"
+              onChangeText={value => setForm(prev => ({...prev, crn: value}))}
+              value={form.crn}
+            />
+          </>
+        )}
         <Input
           Icon={Icons.SMS}
           placeholder="user@email.com"

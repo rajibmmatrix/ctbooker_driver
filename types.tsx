@@ -112,6 +112,8 @@ export interface ITranslation {
   profesonal: string;
   fname: string;
   lname: string;
+  company_name: string;
+  crn: string;
   please_register_to_continue: string;
   register: string;
   already_have_an_account_login: string;

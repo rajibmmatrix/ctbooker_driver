@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {
   Image,
   ScrollView,
@@ -7,14 +7,25 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {TabScreenProps} from 'types';
 import {Container, Header} from '~common';
 import {Icons, IMAGES} from '~constants';
-import {COLORS, FONTS, fontSize, _styles} from '~styles';
 import {useTranslations} from '~translation';
+import {useSelector} from '~app';
+import {COLORS, FONTS, fontSize, _styles} from '~styles';
+import {TabScreenProps} from 'types';
 
 export default function HomeScreen({navigation}: TabScreenProps<'Home'>) {
   const {translation} = useTranslations();
+
+  const user = useSelector(state => state.auth.user);
+
+  const fullname = useMemo(
+    () =>
+      user?.customer_type === '0'
+        ? `${user.first_name} ${user.last_name}`
+        : user?.company_name,
+    [user],
+  );
 
   return (
     <Container>
@@ -23,7 +34,7 @@ export default function HomeScreen({navigation}: TabScreenProps<'Home'>) {
         <View style={_styles.rowCenter}>
           <Image source={IMAGES.Logo} style={styles.headerLogo} />
           <View style={styles.headerBody}>
-            <Text style={styles.title}>Alexandra Daddario</Text>
+            <Text style={styles.title}>{fullname}</Text>
             <View style={_styles.rowCenter}>
               <Icons.SmallCar />
               <Text style={styles.description}>Honda WR-V</Text>
