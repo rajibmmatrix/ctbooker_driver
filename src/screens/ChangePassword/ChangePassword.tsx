@@ -23,6 +23,9 @@ export default function ChangePasswordScreen({
       !form.old_password.trim() ||
       !form.new_password.trim() ||
       !form.confirm_password.trim() ||
+      form.old_password.length < 8 ||
+      form.new_password.length < 8 ||
+      form.confirm_password.length < 8 ||
       form.new_password !== form.confirm_password
     ) {
       return showToaster(translation.signup_error, 'error');

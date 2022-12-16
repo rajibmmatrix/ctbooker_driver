@@ -26,7 +26,7 @@ export default function LoginScreen({navigation}: StackScreenProps<'Login'>) {
       status = true;
     } else if (!reg.test(form.email.trim())) {
       status = true;
-    } else if (!form.password.trim()) {
+    } else if (!form.password.trim() || form.password.length < 8) {
       status = true;
     }
     return status;
