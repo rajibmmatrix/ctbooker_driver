@@ -8,24 +8,23 @@ import {SIZES} from '~styles';
 import {ICPassword, SideScreenProps} from 'types';
 import {api, showToaster} from '~utils';
 
+const params = {old_password: '', new_password: '', confirm_password: ''};
+
 export default function ChangePasswordScreen({
   navigation,
 }: SideScreenProps<'ChangePassword'>) {
   const dispatch = useDispatch();
   const {translation} = useTranslations();
 
-  const [form, setForm] = useState<ICPassword>({
-    old_password: '',
-    new_password: '',
-    confirm_password: '',
-  });
-
-  const checkValidation = (): boolean => {
-    return true;
-  };
+  const [form, setForm] = useState<ICPassword>(params);
 
   const handleChangePassword = () => {
-    if (checkValidation()) {
+    if (
+      !form.old_password.trim() ||
+      !form.new_password.trim() ||
+      !form.confirm_password.trim() ||
+      form.new_password !== form.confirm_password
+    ) {
       return showToaster(translation.signup_error, 'error');
     }
     dispatch(loading(true));
@@ -33,6 +32,7 @@ export default function ChangePasswordScreen({
       .changePassword(form)
       .then((res: any) => {
         showToaster(res.message, 'success');
+        setForm(params);
         navigation.goBack();
       })
       .catch(err => showToaster(err, 'error'))
