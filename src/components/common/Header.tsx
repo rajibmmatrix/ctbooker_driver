@@ -1,19 +1,24 @@
 import React, {FC, memo} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {SvgProps} from 'react-native-svg';
 import {Icons} from '~constants';
 import {COLORS, FONTS, fontSize, _styles} from '~styles';
 
 interface Props {
   title: string;
   showNotification?: boolean;
+  RightIcon?: FC<SvgProps>;
   isBack?: boolean;
+  onRightPress?: () => void;
 }
 
 const Header: FC<Props> = ({
   title,
   showNotification = true,
   isBack = false,
+  RightIcon,
+  onRightPress,
 }) => {
   const navigation = useNavigation() as any;
 
@@ -34,8 +39,17 @@ const Header: FC<Props> = ({
       <Text style={styles.title}>{title}</Text>
       <View style={[styles.button, _styles.allCenter]}>
         {showNotification && !isBack && (
-          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
-            <Icons.Notification width={19} height={19} />
+          <TouchableOpacity
+            onPress={() =>
+              onRightPress
+                ? onRightPress()
+                : navigation.navigate('Notification')
+            }>
+            {RightIcon ? (
+              <RightIcon width={19} height={19} />
+            ) : (
+              <Icons.Notification width={19} height={19} />
+            )}
           </TouchableOpacity>
         )}
       </View>

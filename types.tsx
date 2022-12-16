@@ -94,6 +94,12 @@ export interface ISignup {
   password: string;
 }
 
+export interface ICPassword {
+  old_password: string;
+  new_password: string;
+  confirm_password: string;
+}
+
 export interface ITranslation {
   welcome: string;
   my_profile: string;
@@ -134,4 +140,9 @@ export interface ITranslation {
   reservation: string;
   summary: string;
   new_reservation_request: string;
+  save: string;
+  old_password: string;
+  new_password: string;
+  confirm_password: string;
+  edit_profile: string;
 }

@@ -30,3 +30,4 @@ export {default as MenuHouse} from '../assets/icons/menu_house.svg';
 export {default as MenuLock} from '../assets/icons/menu_lock.svg';
 export {default as MenuUser} from '../assets/icons/menu_user.svg';
 export {default as MenuWallet} from '../assets/icons/menu_wallet.svg';
+export {default as EditProfile} from '../assets/icons/edit-profile.svg';

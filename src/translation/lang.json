@@ -38,7 +38,12 @@
         "price": "Prix",
         "reservation": "Réservation",
         "summary": "Résumé",
-        "new_reservation_request": "Nouvelle demande de réservation"
+        "new_reservation_request": "Nouvelle demande de réservation",
+        "save": "sauvegarder",
+        "old_password": "ancien mot de passe",
+        "new_password": "nouveau mot de passe",
+        "confirm_password": "Confirmez le mot de passe",
+        "edit_profile": "Editer le profil"
     },
     "en": {
         "welcome": "Welcome",
@@ -79,6 +84,11 @@
         "price": "Price",
         "reservation": "Reservation",
         "summary": "Summary",
-        "new_reservation_request": "New reservation request"
+        "new_reservation_request": "New reservation request",
+        "save": "Save",
+        "old_password": "Old Password",
+        "new_password": "New Password",
+        "confirm_password": "Confirm Password",
+        "edit_profile": "Edit Profile"
     }
 }

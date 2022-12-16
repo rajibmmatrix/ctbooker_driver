@@ -13,4 +13,5 @@ export const URL = {
   signup: '/api/driver/v1/auth/signup',
   forgot: '/api/driver/v1/auth/forgot-password',
   edit_profile: '/driver/v1/auth/edit-profile',
+  change_password: '/api/driver/v1/auth/change-password',
 };

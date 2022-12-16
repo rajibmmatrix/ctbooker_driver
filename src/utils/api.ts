@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '~config';
 import {URL} from '~constants';
-import {IForgot, ILogin, ISignup} from 'types';
+import {ICPassword, IForgot, ILogin, ISignup} from 'types';
 
 const API = axios.create({
   baseURL: config.baseURL,
@@ -48,5 +48,8 @@ export const getUser = () => API.get(URL.getUser);
 export const signIn = (params: ILogin) => API.post(URL.login, params);
 export const signUp = (params: ISignup) => API.post(URL.signup, params);
 export const forgot = (params: IForgot) => API.post(URL.forgot, params);
+
+export const changePassword = (params: ICPassword) =>
+  API.post(URL.change_password, params);
 
 export default API;
