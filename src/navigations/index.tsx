@@ -8,7 +8,7 @@ import SideNavigation from './SideNavigation';
 import config from '~config';
 import {useTranslations} from '~translation';
 import {loading, useDispatch} from '~app';
-import {api, log, navigation, storage} from '~utils';
+import {api, navigation, showToaster, storage} from '~utils';
 import {StackParamList} from 'types';
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -49,7 +49,7 @@ export default function Navigation() {
           }
         }
       })
-      .catch(err => log(err));
+      .catch(err => showToaster(err.message, 'error'));
 
     return () => {};
   }, [updateLanguage, version, dispatch]);
