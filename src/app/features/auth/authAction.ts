@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {api, showToaster, storage} from '~utils';
-import {IForgot, ILogin, ISignup} from 'types';
+import {IForgot, ILogin, ISignup, IUserEdit} from 'types';
 
 //For Check user login or not
 export const checkLogin = createAsyncThunk(
@@ -72,6 +72,21 @@ export const forgot = createAsyncThunk(
       const {message}: any = await api.forgot(params);
       showToaster(message, 'success');
       return params;
+    } catch (error: any) {
+      showToaster(error, 'error');
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
+//For updater user
+export const editProfile = createAsyncThunk(
+  'auth/editProfile',
+  async (params: IUserEdit, thunkAPI) => {
+    try {
+      const {data, message}: any = await api.editProfile(params);
+      showToaster(message, 'success');
+      return data?.user_data;
     } catch (error: any) {
       showToaster(error, 'error');
       return thunkAPI.rejectWithValue(error);

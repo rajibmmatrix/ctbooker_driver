@@ -31,3 +31,7 @@ export {default as MenuLock} from '../assets/icons/menu_lock.svg';
 export {default as MenuUser} from '../assets/icons/menu_user.svg';
 export {default as MenuWallet} from '../assets/icons/menu_wallet.svg';
 export {default as EditProfile} from '../assets/icons/edit-profile.svg';
+export {default as RadioBtton} from '../assets/icons/radio_btton.svg';
+export {default as SelectedRadioButton} from '../assets/icons/selected_radio_button.svg';
+export {default as Location} from '../assets/icons/location.svg';
+export {default as Mobile} from '../assets/icons/mobile.svg';

@@ -100,6 +100,18 @@ export interface ICPassword {
   confirm_password: string;
 }
 
+export interface IUserEdit {
+  company_name?: string;
+  crn?: string;
+  first_name?: string;
+  last_name?: string;
+  customer_type?: '0' | '1' | string;
+  address?: string;
+  phone?: string;
+  latitude?: string;
+  longitude?: string;
+}
+
 export interface ITranslation {
   welcome: string;
   my_profile: string;
@@ -146,4 +158,6 @@ export interface ITranslation {
   new_password: string;
   confirm_password: string;
   edit_profile: string;
+  address: string;
+  mobile: string;
 }

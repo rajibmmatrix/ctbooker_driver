@@ -1,7 +1,9 @@
 import axios from 'axios';
 import config from '~config';
 import {URL} from '~constants';
-import {ICPassword, IForgot, ILogin, ISignup} from 'types';
+import {deleteToken} from './storage';
+import * as navigation from './navigationRef';
+import {ICPassword, IForgot, ILogin, ISignup, IUserEdit} from 'types';
 
 const API = axios.create({
   baseURL: config.baseURL,
@@ -13,7 +15,6 @@ const API = axios.create({
 
 API.interceptors.response.use(
   function (response) {
-    console.log('Response: ' + JSON.stringify(response));
     if (response.data?.status && response.data.status !== 0) {
       return response.data;
     } else {
@@ -21,9 +22,14 @@ API.interceptors.response.use(
       return Promise.reject(message);
     }
   },
-  function (error) {
-    console.log('error: ' + error);
-    return Promise.reject(error);
+  async function (error) {
+    const message = error.response?.data?.message || error.message;
+    if (error?.response?.status === 401) {
+      removeApiToken();
+      await deleteToken();
+      navigation.reset('Login');
+    }
+    return Promise.reject(message);
   },
 );
 
@@ -48,6 +54,8 @@ export const getUser = () => API.get(URL.getUser);
 export const signIn = (params: ILogin) => API.post(URL.login, params);
 export const signUp = (params: ISignup) => API.post(URL.signup, params);
 export const forgot = (params: IForgot) => API.post(URL.forgot, params);
+export const editProfile = (params: IUserEdit) =>
+  API.post(URL.edit_profile, params);
 
 export const changePassword = (params: ICPassword) =>
   API.post(URL.change_password, params);

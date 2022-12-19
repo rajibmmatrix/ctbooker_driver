@@ -44,7 +44,9 @@
         "old_password": "ancien mot de passe",
         "new_password": "nouveau mot de passe",
         "confirm_password": "Confirmez le mot de passe",
-        "edit_profile": "Editer le profil"
+        "edit_profile": "Editer le profil",
+        "address": "Adresse",
+        "mobile": "Portable"
     },
     "en": {
         "welcome": "Welcome",
@@ -91,6 +93,8 @@
         "old_password": "Old Password",
         "new_password": "New Password",
         "confirm_password": "Confirm Password",
-        "edit_profile": "Edit Profile"
+        "edit_profile": "Edit Profile",
+        "address": "Address",
+        "mobile": "Mobile"
     }
 }

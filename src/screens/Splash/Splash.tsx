@@ -17,7 +17,7 @@ export default function SplashScreen({navigation}: StackScreenProps<'Splash'>) {
         }
         navigation.replace('Login');
       })
-      .catch(() => {})
+      .catch(() => navigation.replace('Login'))
       .finally(() => Splash.hide());
     return () => {};
   }, [navigation, dispatch]);

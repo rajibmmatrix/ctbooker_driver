@@ -12,6 +12,6 @@ export const URL = {
   login: '/api/driver/v1/auth/login-driver',
   signup: '/api/driver/v1/auth/signup',
   forgot: '/api/driver/v1/auth/forgot-password',
-  edit_profile: '/driver/v1/auth/edit-profile',
+  edit_profile: '/api/driver/v1/auth/edit-profile-driver',
   change_password: '/api/driver/v1/auth/change-password',
 };
