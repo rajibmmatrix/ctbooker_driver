@@ -116,6 +116,7 @@ export interface ITranslation {
   forgot_description: string;
   send: string;
   enter_email: string;
+  password_error: string;
   signup: string;
   individual: string;
   profesonal: string;

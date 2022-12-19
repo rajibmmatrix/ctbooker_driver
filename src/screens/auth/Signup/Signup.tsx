@@ -35,6 +35,7 @@ export default function SignupScreen({navigation}: StackScreenProps<'Signup'>) {
   const checkValidation = () => {
     let status = false;
     let isEmailValide = true;
+    let isPasswordValide = true;
     const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/;
     if (form.customer_type === '0' && !form?.first_name?.trim()) {
       status = true;
@@ -46,20 +47,27 @@ export default function SignupScreen({navigation}: StackScreenProps<'Signup'>) {
       status = true;
     } else if (!form.email.trim()) {
       status = true;
+    } else if (!form.password.trim()) {
+      status = true;
     } else if (!reg.test(form.email.trim())) {
       status = true;
       isEmailValide = false;
-    } else if (!form.password.trim() || form.password.length < 8) {
+    } else if (form.password.length < 8) {
       status = true;
+      isPasswordValide = false;
     }
-    return {status, isEmailValide};
+    return {status, isEmailValide, isPasswordValide};
   };
 
   const handleSignup = () => {
-    const {status, isEmailValide} = checkValidation();
+    const {status, isEmailValide, isPasswordValide} = checkValidation();
     if (status) {
       return showToaster(
-        !isEmailValide ? translation.enter_email : translation.signup_error,
+        !isEmailValide
+          ? translation.enter_email
+          : !isPasswordValide
+          ? translation.password_error
+          : translation.signup_error,
         'error',
       );
     }
