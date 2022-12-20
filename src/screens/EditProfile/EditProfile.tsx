@@ -5,6 +5,7 @@ import {Icons, IMAGES} from '~constants';
 import {useTranslations} from '~translation';
 import {editProfile, loading, useDispatch, useSelector} from '~app';
 import {COLORS, FONTS, fontSize, SIZES} from '~styles';
+import {showToaster} from '~utils';
 import {IUserEdit, SideScreenProps} from 'types';
 
 export default function EditProfileScreen({}: SideScreenProps<'EditProfile'>) {
@@ -30,7 +31,31 @@ export default function EditProfileScreen({}: SideScreenProps<'EditProfile'>) {
     [user],
   );
 
+  const chackValidation = (): boolean => {
+    if (
+      form.customer_type === '0' &&
+      (!form.first_name?.trim() || !form.last_name?.trim())
+    ) {
+      return true;
+    } else if (
+      form.customer_type === '1' &&
+      (!form.company_name?.trim() || !form.crn?.trim())
+    ) {
+      return true;
+    } else if (
+      !form.address?.trim() ||
+      !form.phone?.trim() ||
+      form.phone.trim().length < 10
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   const handleEditProfile = () => {
+    if (chackValidation()) {
+      return showToaster(translation.signup_error, 'error');
+    }
     dispatch(loading(true));
     dispatch(editProfile(form))
       .unwrap()
