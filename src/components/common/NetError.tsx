@@ -1,7 +1,8 @@
 import React, {FC, memo, useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, Modal, StyleSheet, Text, View} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-import {COLORS, FONTS, fontSize} from '~styles';
+import {IMAGES} from '~constants';
+import {COLORS, FONTS, fontSize, SIZES, _styles} from '~styles';
 
 const NetError: FC = () => {
   const [isConnected, setIsConnected] = useState<boolean>(true);
@@ -13,12 +14,18 @@ const NetError: FC = () => {
     return () => unsubscribe();
   }, []);
 
-  if (isConnected) return null;
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>No connection</Text>
-    </View>
+    <Modal visible={!isConnected} transparent style={_styles.container}>
+      <View style={styles.container}>
+        <View style={styles.content}>
+          <Image source={IMAGES.NoInternet} style={styles.logo} />
+          <Text style={styles.title}>No connection</Text>
+          <Text style={styles.description}>
+            Please check your internet connectivity and try again
+          </Text>
+        </View>
+      </View>
+    </Modal>
   );
 };
 
@@ -26,15 +33,39 @@ export default memo(NetError);
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 5,
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: COLORS.Dark,
+    justifyContent: 'center',
+    paddingHorizontal: SIZES.H22 * 1.5,
+    backgroundColor: COLORS.Primary_Modal,
+  },
+  content: {
+    width: '100%',
+    padding: SIZES.H15,
+    paddingHorizontal: SIZES.H38,
+    borderRadius: 15,
+    backgroundColor: COLORS.Light,
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
+    marginVertical: SIZES.V10,
+    resizeMode: 'contain',
   },
   title: {
-    fontSize: fontSize(10),
+    fontSize: fontSize(14),
+    fontWeight: '500',
+    fontFamily: FONTS.Primary_Medium,
+    color: COLORS.Primary_Text,
+    textAlign: 'center',
+  },
+  description: {
+    fontSize: fontSize(13),
     fontWeight: '400',
     fontFamily: FONTS.Primary_Regular,
-    color: COLORS.Light,
+    color: COLORS.Primary_Text,
     textAlign: 'center',
+    marginVertical: SIZES.V5,
   },
 });
