@@ -100,6 +100,10 @@ export interface ICPassword {
   confirm_password: string;
 }
 
+export interface IPPic {
+  profile: string;
+}
+
 export interface IUserEdit {
   company_name?: string;
   crn?: string;

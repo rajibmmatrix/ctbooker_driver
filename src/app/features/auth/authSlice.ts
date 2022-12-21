@@ -8,6 +8,7 @@ import {
   signup,
   forgot,
   editProfile,
+  editProfilePic,
 } from './authAction';
 
 export interface IUser {
@@ -23,6 +24,7 @@ export interface IUser {
   phone?: string;
   latitude?: string;
   longitude?: string;
+  profile?: string; //Profile Pic
 }
 
 export interface AuthState {
@@ -72,6 +74,13 @@ export const authSlice = createSlice({
     });
     builder.addCase(
       editProfile.fulfilled,
+      (state: AuthState, action: PayloadAction<IUser>) => {
+        state.user = action.payload;
+        state.error = null;
+      },
+    );
+    builder.addCase(
+      editProfilePic.fulfilled,
       (state: AuthState, action: PayloadAction<IUser>) => {
         state.user = action.payload;
         state.error = null;

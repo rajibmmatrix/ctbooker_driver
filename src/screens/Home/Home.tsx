@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Container, Header} from '~common';
+import {Avatar, Container, Header} from '~common';
 import {Icons, IMAGES} from '~constants';
 import {useTranslations} from '~translation';
 import {useSelector} from '~app';
@@ -32,7 +32,7 @@ export default function HomeScreen({navigation}: TabScreenProps<'Home'>) {
       <Header title={translation.welcome} />
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={_styles.rowCenter}>
-          <Image source={IMAGES.Logo} style={styles.headerLogo} />
+          <Avatar uri={user?.profile} style={styles.headerLogo} />
           <View style={styles.headerBody}>
             <Text style={styles.title}>{fullname}</Text>
             <View style={_styles.rowCenter}>

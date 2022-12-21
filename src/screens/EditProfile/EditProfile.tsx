@@ -1,9 +1,29 @@
 import React, {useMemo, useState} from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Button, Container, Header, Input, RadioButton} from '~common';
-import {Icons, IMAGES} from '~constants';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {
+  Avatar,
+  Button,
+  Container,
+  Header,
+  ImagePicker,
+  Input,
+  RadioButton,
+} from '~components';
+import {Icons} from '~constants';
 import {useTranslations} from '~translation';
-import {editProfile, loading, useDispatch, useSelector} from '~app';
+import {
+  editProfile,
+  editProfilePic,
+  loading,
+  useDispatch,
+  useSelector,
+} from '~app';
 import {COLORS, FONTS, fontSize, SIZES} from '~styles';
 import {showToaster} from '~utils';
 import {IUserEdit, SideScreenProps} from 'types';
@@ -13,6 +33,7 @@ export default function EditProfileScreen({}: SideScreenProps<'EditProfile'>) {
   const {translation} = useTranslations();
   const user = useSelector(state => state.auth.user);
 
+  const [showPickup, setShowPickup] = useState<boolean>(false);
   const [form, setForm] = useState<IUserEdit>({
     first_name: user?.first_name,
     last_name: user?.last_name,
@@ -63,12 +84,27 @@ export default function EditProfileScreen({}: SideScreenProps<'EditProfile'>) {
       .finally(() => dispatch(loading(false)));
   };
 
+  const handleProfilePic = (image: string) => {
+    dispatch(loading(true));
+    dispatch(editProfilePic({profile: image}))
+      .unwrap()
+      .catch(() => {})
+      .finally(() => dispatch(loading(false)));
+  };
+
   return (
     <Container>
       <Header title={translation.edit_profile} isBack />
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={styles.header}>
-          <Image source={IMAGES.Logo} style={styles.logo} />
+          <View style={styles.headerLogo}>
+            <Avatar uri={user?.profile} style={styles.logo} />
+            <TouchableOpacity
+              onPress={() => setShowPickup(true)}
+              style={styles.headerButton}>
+              <Icons.EditProfilePic width={16} height={16} />
+            </TouchableOpacity>
+          </View>
           <Text style={styles.title}>{fullname}</Text>
           <Text style={styles.description}>{user?.email}</Text>
         </View>
@@ -155,6 +191,11 @@ export default function EditProfileScreen({}: SideScreenProps<'EditProfile'>) {
           />
         </View>
       </ScrollView>
+      <ImagePicker
+        show={showPickup}
+        onClose={() => setShowPickup(false)}
+        onChose={handleProfilePic}
+      />
     </Container>
   );
 }
@@ -167,14 +208,29 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
   },
-  logo: {
+  headerLogo: {
     width: 125,
     height: 125,
+    borderWidth: 1,
+    borderRadius: 100,
+    backgroundColor: COLORS.Gray,
+    borderColor: COLORS.Primary_Border,
+  },
+  logo: {
+    width: '100%',
+    height: '100%',
     resizeMode: 'contain',
+    borderRadius: 100,
+  },
+  headerButton: {
+    right: 3,
+    bottom: 3,
+    padding: SIZES.H5,
+    position: 'absolute',
     borderWidth: 1,
     borderRadius: 100,
     borderColor: COLORS.Primary_Border,
-    backgroundColor: COLORS.Gray,
+    backgroundColor: COLORS.Primary_Card,
   },
   title: {
     fontSize: fontSize(14),

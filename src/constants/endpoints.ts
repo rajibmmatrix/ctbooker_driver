@@ -6,6 +6,7 @@ export const URL = {
   //Common
   lang: '/upload/json/lang-chauffeur.json',
   details: '/api/lang-json?type=chauffeur',
+  image: baseURL + '/upload/dp/',
 
   //Auth
   getUser: '/api/driver/v1/auth/get-user',
@@ -13,5 +14,6 @@ export const URL = {
   signup: '/api/driver/v1/auth/signup',
   forgot: '/api/driver/v1/auth/forgot-password',
   edit_profile: '/api/driver/v1/auth/edit-profile-driver',
+  edit_profilePic: '/api/driver/v1/auth/profile-img',
   change_password: '/api/driver/v1/auth/change-password',
 };
