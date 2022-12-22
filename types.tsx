@@ -164,4 +164,6 @@ export interface ITranslation {
   edit_profile: string;
   address: string;
   mobile: string;
+  no_connection: string;
+  internet_error: string;
 }

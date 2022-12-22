@@ -46,7 +46,9 @@
         "confirm_password": "Confirmez le mot de passe",
         "edit_profile": "Editer le profil",
         "address": "Adresse",
-        "mobile": "Portable"
+        "mobile": "Portable",
+        "no_connection": "Pas de connection",
+        "internet_error": "Veuillez vérifier votre connexion Internet et réessayer."
     },
     "en": {
         "welcome": "Welcome",
@@ -95,6 +97,8 @@
         "confirm_password": "Confirm Password",
         "edit_profile": "Edit Profile",
         "address": "Address",
-        "mobile": "Mobile"
+        "mobile": "Mobile",
+        "no_connection": "No connection",
+        "internet_error": "Please check your internet connectivity and try again."
     }
 }
