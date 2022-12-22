@@ -84,9 +84,12 @@ export default function EditProfileScreen({}: SideScreenProps<'EditProfile'>) {
       .finally(() => dispatch(loading(false)));
   };
 
-  const handleProfilePic = (image: string) => {
+  const handleProfilePic = (image: any) => {
+    let data = new FormData();
+    data.append('profile', image);
+    const params = image?.base64 ? {profile: image.base64} : data;
     dispatch(loading(true));
-    dispatch(editProfilePic({profile: image}))
+    dispatch(editProfilePic(params as any))
       .unwrap()
       .catch(() => {})
       .finally(() => dispatch(loading(false)));

@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {
-  ImagePickerResponse,
+  Asset,
   launchCamera,
   launchImageLibrary,
 } from 'react-native-image-picker';
@@ -20,54 +20,47 @@ interface Props {
   show: boolean;
   title?: string;
   onClose: () => void;
-  onChose: (image: string) => void;
+  onChose: (image: Asset) => void;
 }
 
 const ImagePicker: FC<Props> = ({show = false, title, onClose, onChose}) => {
-  const handelCamera = () => {
+  const handelCamera = async () => {
     try {
-      launchCamera(
-        {
-          includeBase64: true,
-          mediaType: 'photo',
-          cameraType: 'front',
-          saveToPhotos: true,
-          quality: 0,
-        },
-        handelImage,
-      );
+      const data = await launchCamera({
+        includeBase64: true,
+        mediaType: 'photo',
+        cameraType: 'front',
+        saveToPhotos: true,
+        maxHeight: 200,
+        maxWidth: 200,
+        quality: 0,
+      });
+      if (data.assets?.length) {
+        onChose(data.assets[0]);
+        onClose();
+      }
     } catch (error: any) {
-      showToaster(error, 'error');
+      showToaster(error.message, 'error');
     }
   };
 
   const handelGallery = async () => {
     try {
-      launchImageLibrary(
-        {
-          includeBase64: true,
-          mediaType: 'photo',
-          selectionLimit: 1,
-          quality: 0,
-        },
-        handelImage,
-      );
+      const data = await launchImageLibrary({
+        includeBase64: true,
+        mediaType: 'photo',
+        selectionLimit: 1,
+        maxHeight: 200,
+        maxWidth: 200,
+        quality: 0,
+      });
+      if (data.assets?.length) {
+        onChose(data.assets[0]);
+        onClose();
+      }
     } catch (error: any) {
-      showToaster(error, 'error');
+      showToaster(error.message, 'error');
     }
-  };
-
-  const handelImage = (data: ImagePickerResponse) => {
-    if (data.assets?.length) {
-      const image = {
-        ...data.assets[0],
-        type: data.assets[0].type,
-        uri: data.assets[0].uri,
-        name: data.assets[0].fileName,
-      };
-      onChose(image.base64!);
-    }
-    onClose();
   };
 
   return (
