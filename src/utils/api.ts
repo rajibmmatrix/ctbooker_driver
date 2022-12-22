@@ -62,4 +62,7 @@ export const editProfilePic = (params: IPPic) =>
 export const changePassword = (params: ICPassword) =>
   API.post(URL.change_password, params);
 
+//Booking API
+export const getBooking = () => API.get(URL.my_booking);
+
 export default API;

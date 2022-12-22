@@ -16,4 +16,7 @@ export const URL = {
   edit_profile: '/api/driver/v1/auth/edit-profile-driver',
   edit_profilePic: '/api/driver/v1/auth/profile-img',
   change_password: '/api/driver/v1/auth/change-password',
+
+  //Booking
+  my_booking: '/api/driver/v1/booking/current-booking',
 };
