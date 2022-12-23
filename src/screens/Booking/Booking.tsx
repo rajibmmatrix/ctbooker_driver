@@ -5,6 +5,7 @@ import {Icons} from '~constants';
 import {useTranslations} from '~translation';
 import {getBookings, loading, useDispatch, useSelector} from '~app';
 import {COLORS, FONTS, fontSize, SIZES, _styles} from '~styles';
+import {toDate} from '~utils';
 import {TabScreenProps} from 'types';
 
 export default function BookingScreen({}: TabScreenProps<'Booking'>) {
@@ -39,7 +40,7 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
               <View style={_styles.rowCenter}>
                 <Icons.SmallCalendar width={16} height={16} />
                 <Text style={[styles.description, styles.ml4]}>
-                  {booking?.datetime?.toLocaleString()}
+                  {toDate(booking?.datetime)}
                 </Text>
               </View>
             </View>
