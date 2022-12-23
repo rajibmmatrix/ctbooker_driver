@@ -42,7 +42,7 @@ export default function HomeScreen({navigation}: TabScreenProps<'Home'>) {
           </View>
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Booking')}
+          onPress={() => navigation.navigate('Summary')}
           style={styles.body}>
           <Icons.BigDriving width={74} height={74} />
           <Text style={styles.bigTitle}>{translation.summary}</Text>

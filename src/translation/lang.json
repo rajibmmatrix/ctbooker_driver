@@ -48,7 +48,8 @@
         "address": "Adresse",
         "mobile": "Portable",
         "no_connection": "Pas de connection",
-        "internet_error": "Veuillez vérifier votre connexion Internet et réessayer."
+        "internet_error": "Veuillez vérifier votre connexion Internet et réessayer.",
+        "no_data": "Aucune donnée disponible"
     },
     "en": {
         "welcome": "Welcome",
@@ -99,6 +100,7 @@
         "address": "Address",
         "mobile": "Mobile",
         "no_connection": "No connection",
-        "internet_error": "Please check your internet connectivity and try again."
+        "internet_error": "Please check your internet connectivity and try again.",
+        "no_data": "No data found"
     }
 }

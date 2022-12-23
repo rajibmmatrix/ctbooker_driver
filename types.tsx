@@ -32,6 +32,7 @@ export type SideParamList = {
   Payment: undefined;
   EditProfile: undefined;
   Notification: undefined;
+  Summary: undefined;
 };
 
 //For Tab Navigations
@@ -116,6 +117,11 @@ export interface IUserEdit {
   longitude?: string;
 }
 
+export interface ICRBooking {
+  latitude: string | number;
+  longitude: string | number;
+}
+
 export interface ITranslation {
   welcome: string;
   my_profile: string;
@@ -166,4 +172,5 @@ export interface ITranslation {
   mobile: string;
   no_connection: string;
   internet_error: string;
+  no_data: string;
 }

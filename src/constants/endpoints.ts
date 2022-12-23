@@ -18,5 +18,6 @@ export const URL = {
   change_password: '/api/driver/v1/auth/change-password',
 
   //Booking
-  my_booking: '/api/driver/v1/booking/current-booking',
+  get_summary: '/api/driver/v1/booking/current-booking',
+  get_bookings: '/api/driver/v1/booking/available-booking',
 };

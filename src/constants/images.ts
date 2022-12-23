@@ -7,4 +7,5 @@ export const IMAGES = {
   Gallery: require('../assets/images/photo-gallery.png'),
   Close: require('../assets/images/close-window.png'),
   NoInternet: require('../assets/images/no-internet.png'),
+  NoData: require('../assets/images/no_data.jpg'),
 };

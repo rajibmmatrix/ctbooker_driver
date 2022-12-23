@@ -3,7 +3,15 @@ import config from '~config';
 import {URL} from '~constants';
 import {deleteToken} from './storage';
 import * as navigation from './navigationRef';
-import {ICPassword, IForgot, ILogin, IPPic, ISignup, IUserEdit} from 'types';
+import {
+  ICPassword,
+  ICRBooking,
+  IForgot,
+  ILogin,
+  IPPic,
+  ISignup,
+  IUserEdit,
+} from 'types';
 
 const API = axios.create({
   baseURL: config.baseURL,
@@ -63,6 +71,8 @@ export const changePassword = (params: ICPassword) =>
   API.post(URL.change_password, params);
 
 //Booking API
-export const getBooking = () => API.get(URL.my_booking);
+export const getSummary = () => API.get(URL.get_summary);
+export const getBookings = (params: ICRBooking) =>
+  API.post(URL.get_bookings, params);
 
 export default API;

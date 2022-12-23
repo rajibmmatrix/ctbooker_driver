@@ -1,31 +1,28 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Container, Header, IconButton, NoDataFound} from '~components';
+import {Container, Header, NoDataFound} from '~components';
 import {Icons} from '~constants';
 import {useTranslations} from '~translation';
-import {getBookings, loading, useDispatch, useSelector} from '~app';
+import {getSummary, loading, useDispatch, useSelector} from '~app';
 import {COLORS, FONTS, fontSize, SIZES, _styles} from '~styles';
-import {TabScreenProps} from 'types';
+import {SideScreenProps} from 'types';
 
-export default function BookingScreen({}: TabScreenProps<'Booking'>) {
+export default function SummaryScreen({}: SideScreenProps<'Summary'>) {
   const dispatch = useDispatch();
   const {translation} = useTranslations();
-  const {bookings} = useSelector(state => state.booking);
+  const {summary} = useSelector(state => state.booking);
 
   useEffect(() => {
-    const params = {latitude: '22.484720', longitude: '88.338463'};
     dispatch(loading(true));
-    dispatch(getBookings(params)).finally(() => dispatch(loading(false)));
+    dispatch(getSummary()).finally(() => dispatch(loading(false)));
 
     return () => {};
   }, [dispatch]);
 
-  const booking = useMemo(() => bookings[0], [bookings]);
-
   return (
     <Container>
-      <Header title={translation.new_reservation_request} />
-      {!booking ? (
+      <Header title={translation.summary} isBack />
+      {!summary ? (
         <NoDataFound />
       ) : (
         <ScrollView
@@ -39,7 +36,7 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
               <View style={_styles.rowCenter}>
                 <Icons.SmallCalendar width={16} height={16} />
                 <Text style={[styles.description, styles.ml4]}>
-                  {booking?.datetime?.toLocaleString()}
+                  6 août 2022
                 </Text>
               </View>
             </View>
@@ -49,9 +46,7 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
               </Text>
               <View style={_styles.rowCenter}>
                 <Icons.SmallClock width={16} height={16} />
-                <Text style={[styles.description, styles.ml4]}>
-                  {booking.pickuptime}
-                </Text>
+                <Text style={[styles.description, styles.ml4]}>9h</Text>
               </View>
             </View>
           </View>
@@ -68,7 +63,7 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
             <View style={[_styles.rowCenter, styles.mt15]}>
               <Icons.SmallLocation />
               <Text style={[styles.description, styles.ml10]}>
-                {booking.pickup_address}
+                15 rue Curnonsky 75017 Paris
               </Text>
             </View>
             <Text style={[styles.title, styles.mt26]}>
@@ -77,28 +72,13 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
             <View style={[_styles.rowCenter, styles.mt15]}>
               <Icons.SmallRouting />
               <Text style={[styles.description, styles.ml10]}>
-                {booking.drop_address}
+                15 rue Curnonsky 75017 Paris
               </Text>
             </View>
             <View style={[_styles.allCenter, styles.icon]}>
               <Icons.BigWallet width={52} height={52} />
             </View>
-            <Text style={styles.price}>
-              {translation.price}: {booking.total_cost} €
-            </Text>
-            <View style={styles.footer}>
-              <IconButton
-                title={translation.accept}
-                Icon={Icons.RadioSelected}
-                onPress={() => {}}
-              />
-              <IconButton
-                title={translation.to_refuse}
-                Icon={Icons.Radio}
-                color={COLORS.Buttons[3]}
-                onPress={() => {}}
-              />
-            </View>
+            <Text style={styles.price}>{translation.price}: 40 €</Text>
           </View>
         </ScrollView>
       )}
@@ -160,11 +140,5 @@ const styles = StyleSheet.create({
     color: COLORS.Primary_Text,
     textAlign: 'center',
     marginTop: 13,
-  },
-  footer: {
-    marginTop: 24,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
   },
 });

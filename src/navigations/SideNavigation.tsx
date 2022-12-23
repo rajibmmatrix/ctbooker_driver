@@ -5,6 +5,7 @@ import {
   EditProfileScreen,
   NotificationScreen,
   PaymentScreen,
+  SummaryScreen,
   VehicleDocumentsScreen,
 } from '~screens';
 import {Sidebar} from '~components';
@@ -30,6 +31,7 @@ export default function SideNavigation() {
         component={VehicleDocumentsScreen}
       />
       <Drawer.Screen name="Payment" component={PaymentScreen} />
+      <Drawer.Screen name="Summary" component={SummaryScreen} />
       <Drawer.Screen name="EditProfile" component={EditProfileScreen} />
       <Drawer.Screen name="Notification" component={NotificationScreen} />
     </Drawer.Navigator>
