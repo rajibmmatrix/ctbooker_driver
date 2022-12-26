@@ -1,4 +1,4 @@
-package com.ctbooker_driver;
+package com.ctbooker_driver.app;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

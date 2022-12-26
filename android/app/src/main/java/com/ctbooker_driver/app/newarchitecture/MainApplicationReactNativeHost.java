@@ -1,4 +1,4 @@
-package com.ctbooker_driver.newarchitecture;
+package com.ctbooker_driver.app.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.ctbooker_driver.BuildConfig;
-import com.ctbooker_driver.newarchitecture.components.MainComponentsRegistry;
-import com.ctbooker_driver.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.ctbooker_driver.app.BuildConfig;
+import com.ctbooker_driver.app.newarchitecture.components.MainComponentsRegistry;
+import com.ctbooker_driver.app.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
