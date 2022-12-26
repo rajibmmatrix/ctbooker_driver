@@ -122,6 +122,10 @@ export interface ICRBooking {
   longitude: string | number;
 }
 
+export interface IACBooking {
+  booking_id: string | number;
+}
+
 export interface ITranslation {
   welcome: string;
   my_profile: string;

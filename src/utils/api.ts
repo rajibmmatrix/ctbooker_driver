@@ -4,6 +4,7 @@ import {URL} from '~constants';
 import {deleteToken} from './storage';
 import * as navigation from './navigationRef';
 import {
+  IACBooking,
   ICPassword,
   ICRBooking,
   IForgot,
@@ -74,5 +75,7 @@ export const changePassword = (params: ICPassword) =>
 export const getSummary = () => API.get(URL.get_summary);
 export const getBookings = (params: ICRBooking) =>
   API.post(URL.get_bookings, params);
+export const acceptBooking = (params: IACBooking) =>
+  API.post(URL.accept_booking, params);
 
 export default API;

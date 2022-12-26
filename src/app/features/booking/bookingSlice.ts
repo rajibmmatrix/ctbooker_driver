@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
-import {getBookings, getSummary} from './bookingAction';
+import {acceptBooking, getBookings, getSummary} from './bookingAction';
 
 export interface IBooking {
   id: number;
@@ -53,6 +53,16 @@ export const bookingSlice = createSlice({
       (state: BookingState, action: PayloadAction<IBooking[]>) => {
         state.bookings = action.payload;
         state.error = null;
+      },
+    );
+    builder.addCase(
+      acceptBooking.fulfilled,
+      (state: BookingState, action: PayloadAction<string | number>) => {
+        state.error = null;
+        state.bookings.splice(
+          state.bookings.findIndex(arrow => arrow.id === action.payload),
+          1,
+        );
       },
     );
   },

@@ -3,7 +3,13 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Container, Header, IconButton, NoDataFound} from '~components';
 import {Icons} from '~constants';
 import {useTranslations} from '~translation';
-import {getBookings, loading, useDispatch, useSelector} from '~app';
+import {
+  acceptBooking,
+  getBookings,
+  loading,
+  useDispatch,
+  useSelector,
+} from '~app';
 import {COLORS, FONTS, fontSize, SIZES, _styles} from '~styles';
 import {toDate} from '~utils';
 import {TabScreenProps} from 'types';
@@ -22,6 +28,13 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
   }, [dispatch]);
 
   const booking = useMemo(() => bookings[0], [bookings]);
+
+  const handleAccept = () => {
+    dispatch(loading(true));
+    dispatch(acceptBooking({booking_id: booking.id})).finally(() => {
+      dispatch(loading(false));
+    });
+  };
 
   return (
     <Container>
@@ -91,7 +104,7 @@ export default function BookingScreen({}: TabScreenProps<'Booking'>) {
               <IconButton
                 title={translation.accept}
                 Icon={Icons.RadioSelected}
-                onPress={() => {}}
+                onPress={handleAccept}
               />
               <IconButton
                 title={translation.to_refuse}

@@ -20,4 +20,5 @@ export const URL = {
   //Booking
   get_summary: '/api/driver/v1/booking/current-booking',
   get_bookings: '/api/driver/v1/booking/available-booking',
+  accept_booking: '/api/driver/v1/booking/accept-booking',
 };

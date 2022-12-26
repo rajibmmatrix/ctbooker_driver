@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {api, showToaster} from '~utils';
-import {ICRBooking} from 'types';
+import {IACBooking, ICRBooking} from 'types';
 
 //For Get Booking Summary
 export const getSummary = createAsyncThunk(
@@ -23,6 +23,21 @@ export const getBookings = createAsyncThunk(
     try {
       const {data}: any = await api.getBookings(params);
       return data?.bookings;
+    } catch (error: any) {
+      showToaster(error, 'error');
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
+//For Accept Booking
+export const acceptBooking = createAsyncThunk(
+  'booking/acceptBooking',
+  async (params: IACBooking, thunkAPI) => {
+    try {
+      const {message}: any = await api.acceptBooking(params);
+      showToaster(message, 'success');
+      return params.booking_id;
     } catch (error: any) {
       showToaster(error, 'error');
       return thunkAPI.rejectWithValue(error);

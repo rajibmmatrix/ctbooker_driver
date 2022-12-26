@@ -5,6 +5,7 @@ import {Icons} from '~constants';
 import {useTranslations} from '~translation';
 import {getSummary, loading, useDispatch, useSelector} from '~app';
 import {COLORS, FONTS, fontSize, SIZES, _styles} from '~styles';
+import {toDate} from '~utils';
 import {SideScreenProps} from 'types';
 
 export default function SummaryScreen({}: SideScreenProps<'Summary'>) {
@@ -36,7 +37,7 @@ export default function SummaryScreen({}: SideScreenProps<'Summary'>) {
               <View style={_styles.rowCenter}>
                 <Icons.SmallCalendar width={16} height={16} />
                 <Text style={[styles.description, styles.ml4]}>
-                  6 août 2022
+                  {toDate(summary.datetime)}
                 </Text>
               </View>
             </View>
@@ -46,7 +47,9 @@ export default function SummaryScreen({}: SideScreenProps<'Summary'>) {
               </Text>
               <View style={_styles.rowCenter}>
                 <Icons.SmallClock width={16} height={16} />
-                <Text style={[styles.description, styles.ml4]}>9h</Text>
+                <Text style={[styles.description, styles.ml4]}>
+                  {summary.pickuptime}
+                </Text>
               </View>
             </View>
           </View>
@@ -63,7 +66,7 @@ export default function SummaryScreen({}: SideScreenProps<'Summary'>) {
             <View style={[_styles.rowCenter, styles.mt15]}>
               <Icons.SmallLocation />
               <Text style={[styles.description, styles.ml10]}>
-                15 rue Curnonsky 75017 Paris
+                {summary.pickup_address}
               </Text>
             </View>
             <Text style={[styles.title, styles.mt26]}>
@@ -72,13 +75,15 @@ export default function SummaryScreen({}: SideScreenProps<'Summary'>) {
             <View style={[_styles.rowCenter, styles.mt15]}>
               <Icons.SmallRouting />
               <Text style={[styles.description, styles.ml10]}>
-                15 rue Curnonsky 75017 Paris
+                {summary.drop_address}
               </Text>
             </View>
             <View style={[_styles.allCenter, styles.icon]}>
               <Icons.BigWallet width={52} height={52} />
             </View>
-            <Text style={styles.price}>{translation.price}: 40 €</Text>
+            <Text style={styles.price}>
+              {translation.price}: {summary.total_cost} €
+            </Text>
           </View>
         </ScrollView>
       )}
