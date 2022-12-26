@@ -8,17 +8,21 @@ import {COLORS, FONTS, fontSize, SIZES, _styles} from '~styles';
 import {toDate} from '~utils';
 import {SideScreenProps} from 'types';
 
-export default function SummaryScreen({}: SideScreenProps<'Summary'>) {
+export default function SummaryScreen({
+  navigation,
+}: SideScreenProps<'Summary'>) {
   const dispatch = useDispatch();
   const {translation} = useTranslations();
   const {summary} = useSelector(state => state.booking);
 
   useEffect(() => {
     dispatch(loading(true));
-    dispatch(getSummary()).finally(() => dispatch(loading(false)));
+    const unsubscribe = navigation.addListener('focus', () => {
+      dispatch(getSummary()).finally(() => dispatch(loading(false)));
+    });
 
-    return () => {};
-  }, [dispatch]);
+    return () => unsubscribe();
+  }, [dispatch, navigation]);
 
   return (
     <Container>
